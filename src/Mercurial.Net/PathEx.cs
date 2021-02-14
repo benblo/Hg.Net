@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// Adds utility methods for paths.
@@ -10,7 +10,7 @@ namespace Mercurial
     internal static class PathEx
     {
         /// <summary>
-        /// Joins all the specified parts using <see cref="Path.Combine(string,string)"/>.
+        /// Joins all the specified parts using <see cref="System.IO.Path.Combine(string,string)"/>.
         /// </summary>
         /// <param name="parts">
         /// The parts of the path to build.
@@ -18,7 +18,7 @@ namespace Mercurial
         /// <returns>
         /// The combined path.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="parts"/> is <c>null</c>.</para>
         /// </exception>
         internal static string Combine(params string[] parts)

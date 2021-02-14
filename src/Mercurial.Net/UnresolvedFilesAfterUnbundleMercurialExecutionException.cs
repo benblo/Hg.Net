@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// Represents errors related to Mercurial.

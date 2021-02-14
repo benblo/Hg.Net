@@ -1,7 +1,8 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]

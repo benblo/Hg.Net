@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "rebase" command:
@@ -156,7 +156,7 @@ namespace Mercurial.Gui
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><see cref="SourceRevision"/> must be set before <see cref="RebaseGuiCommand"/> can be executed.</para>
         /// <para>- or -</para>
         /// <para><see cref="DestinationRevision"/> must be set before <see cref="RebaseGuiCommand"/> can be executed.</para>

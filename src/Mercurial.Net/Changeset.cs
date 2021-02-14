@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates a changeset from the log.

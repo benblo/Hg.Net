@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg init" command (<see href="http://www.selenic.com/mercurial/hg.1.html#init"/>):

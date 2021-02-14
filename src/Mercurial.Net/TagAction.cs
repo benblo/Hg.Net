@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used to specify which action to take for a tag, when using the

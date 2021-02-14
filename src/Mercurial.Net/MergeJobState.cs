@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used by a <see cref="MergeJob"/> to indicate its current state.

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mercurial.Extensions.Churn
+namespace Mercurial.Net.Extensions.Churn
 {
     /// <summary>
     /// This class contains logic for the caseguard Mercurial extension.
@@ -31,10 +31,10 @@ namespace Mercurial.Extensions.Churn
         /// <returns>
         /// A collection of <see cref="ChurnGroup" /> instances.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The Churn extension is not installed and active.
         /// </exception>
         public static IEnumerable<ChurnGroup> Churn(this Repository repository, ChurnCommand command = null)

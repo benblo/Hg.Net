@@ -1,4 +1,4 @@
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "shellconfig" command:

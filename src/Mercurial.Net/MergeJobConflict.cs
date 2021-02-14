@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates a single file as part of a <see cref="MergeJob"/>;
@@ -35,7 +35,7 @@ namespace Mercurial
         /// <param name="state">
         /// The initial state of the file.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="mergeJob"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
@@ -84,7 +84,7 @@ namespace Mercurial
         /// <returns>
         /// The path (local to the repository) of the sub-file.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para>An invalid <paramref name="subFile"/> value was specified.</para>
         /// </exception>
         public string GetMergeSubFilePath(MergeJobConflictSubFile subFile)
@@ -124,18 +124,18 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets the contents of the sub-file, as a <see cref="String"/>, using the
+        /// Gets the contents of the sub-file, as a <see cref="string"/>, using the
         /// specified <paramref name="encoding"/> to decode the contents.
         /// </summary>
         /// <param name="subFile">
         /// Which particular <see cref="MergeJobConflictSubFile"/> to get the contents of.
         /// </param>
         /// <param name="encoding">
-        /// The <see cref="Encoding"/> to use when reading the file contents;
-        /// or <c>null</c> to use <see cref="Encoding.Default"/>.
+        /// The <see cref="System.Text.Encoding"/> to use when reading the file contents;
+        /// or <c>null</c> to use <see cref="System.Text.Encoding.Default"/>.
         /// </param>
         /// <returns>
-        /// The contents of the specified <paramref name="subFile"/>, as a <see cref="String"/>.
+        /// The contents of the specified <paramref name="subFile"/>, as a <see cref="string"/>.
         /// </returns>
         public string GetMergeSubFileContentsAsText(MergeJobConflictSubFile subFile, Encoding encoding)
         {
@@ -144,14 +144,14 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets the contents of the sub-file, as a <see cref="String"/>,
-        /// using <see cref="Encoding.Default"/> to decode the contents.
+        /// Gets the contents of the sub-file, as a <see cref="string"/>,
+        /// using <see cref="System.Text.Encoding.Default"/> to decode the contents.
         /// </summary>
         /// <param name="subFile">
         /// Which particular <see cref="MergeJobConflictSubFile"/> to get the contents of.
         /// </param>
         /// <returns>
-        /// The contents of the specified <paramref name="subFile"/>, as a <see cref="String"/>.
+        /// The contents of the specified <paramref name="subFile"/>, as a <see cref="string"/>.
         /// </returns>
         public string GetMergeSubFileContentsAsText(MergeJobConflictSubFile subFile)
         {
@@ -159,13 +159,13 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets the contents of the sub-file, as an array of <see cref="Byte"/>s.
+        /// Gets the contents of the sub-file, as an array of <see cref="byte"/>s.
         /// </summary>
         /// <param name="subFile">
         /// Which particular <see cref="MergeJobConflictSubFile"/> to get the contents of.
         /// </param>
         /// <returns>
-        /// The contents of the specified <paramref name="subFile"/>, as an array of <see cref="Byte"/>s.
+        /// The contents of the specified <paramref name="subFile"/>, as an array of <see cref="byte"/>s.
         /// </returns>
         public byte[] GetMergeSubFileContentsAsBytes(MergeJobConflictSubFile subFile)
         {
@@ -200,15 +200,15 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="Object"/> is equal to the current <see cref="Object"/>.
+        /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.
         /// </summary>
         /// <returns>
-        /// true if the specified <see cref="Object"/> is equal to the current <see cref="Object"/>; otherwise, false.
+        /// true if the specified <see cref="object"/> is equal to the current <see cref="object"/>; otherwise, false.
         /// </returns>
         /// <param name="obj">
-        /// The <see cref="Object"/> to compare with the current <see cref="Object"/>. 
+        /// The <see cref="object"/> to compare with the current <see cref="object"/>. 
         /// </param>
-        /// <exception cref="NullReferenceException">
+        /// <exception cref="System.NullReferenceException">
         /// The <paramref name="obj"/> parameter is null.
         /// </exception>
         public override bool Equals(object obj)
@@ -226,7 +226,7 @@ namespace Mercurial
         /// Serves as a hash function for a particular type. 
         /// </summary>
         /// <returns>
-        /// A hash code for the current <see cref="Object"/>.
+        /// A hash code for the current <see cref="object"/>.
         /// </returns>
         public override int GetHashCode()
         {
@@ -237,10 +237,10 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Returns a <see cref="String"/> that represents this instance.
+        /// Returns a <see cref="string"/> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="String"/> that represents this instance.
+        /// A <see cref="string"/> that represents this instance.
         /// </returns>
         public override string ToString()
         {
@@ -254,7 +254,7 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the resolve method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The <see cref="ResolveAction.List"/> action is invalid for this method.
         /// </exception>
         /// <remarks>

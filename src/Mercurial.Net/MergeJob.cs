@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This helper class is used to control a merge, providing help and data structures for the job.
@@ -51,7 +51,7 @@ namespace Mercurial
         /// <param name="mergeCommand">
         /// The <see cref="MergeCommand"/> that initiated the merge.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="mergeCommand"/> is <c>null</c>.</para>
@@ -171,7 +171,7 @@ namespace Mercurial
         /// Refreshes the resolution status of the files that had merge conflicts when the
         /// merge started.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// Internal error, new file with conflict detected after initial merge.
         /// </exception>
         public void Refresh()
@@ -193,9 +193,9 @@ namespace Mercurial
 
         /// <summary>
         /// If this <see cref="MergeJob"/> has been cancelled this method will throw an
-        /// appropriate <see cref="InvalidOperationException"/>.
+        /// appropriate <see cref="System.InvalidOperationException"/>.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The <see cref="MergeJob"/> has been cancelled, it can no longer be used to manage or query the merge.
         /// </exception>
         private void ThrowIfCancelled()
@@ -260,7 +260,7 @@ namespace Mercurial
         /// <remarks>
         /// WARNING! This will revert and undo any local changes in the working directory.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// Cannot cancel this <see cref="MergeJob"/>, it has already been committed.
         /// </exception>
         public void CancelMerge()
@@ -294,10 +294,10 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="RevSpec"/> with the hash of the new changeset.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>This MergeJob has already been committed, cannot commit again.</para>
         /// <para>- or -</para>
         /// <para>This MergeJob has been cancelled, cannot commit</para>
@@ -342,10 +342,10 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="RevSpec"/> with the hash of the new changeset.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="message"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>This MergeJob has already been committed, cannot commit again.</para>
         /// <para>- or -</para>
         /// <para>This MergeJob has been cancelled, cannot commit</para>
@@ -367,7 +367,7 @@ namespace Mercurial
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>
-        /// A <see cref="IEnumerator{T}"/> that can be used to iterate through the collection.
+        /// A <see cref="System.Collections.Generic.IEnumerator{T}"/> that can be used to iterate through the collection.
         /// </returns>
         public IEnumerator<MergeJobConflict> GetEnumerator()
         {
@@ -379,7 +379,7 @@ namespace Mercurial
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>
-        /// An <see cref="IEnumerator"/> object that can be used to iterate through the collection.
+        /// An <see cref="System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
         /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {

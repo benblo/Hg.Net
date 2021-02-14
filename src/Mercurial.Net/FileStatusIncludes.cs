@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used by <see cref="StatusCommand.Include"/> to specify what kind of

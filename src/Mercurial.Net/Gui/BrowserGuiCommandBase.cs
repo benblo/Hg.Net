@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This is the base class for <see cref="AnnotateGuiCommand"/> and <see cref="ManifestGuiCommand"/>.
@@ -25,7 +25,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The name of the command that will be passed to the TortoiseHg command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected BrowserGuiCommandBase(string command)

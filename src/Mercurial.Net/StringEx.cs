@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Linq;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements IsNullOrWhiteSpace for .NET 3.5.

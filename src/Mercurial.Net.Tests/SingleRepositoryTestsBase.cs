@@ -1,8 +1,7 @@
-using System;
+using Mercurial.Net;
 using NUnit.Framework;
-using System.IO;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     public abstract class SingleRepositoryTestsBase : RepositoryTestsBase
     {

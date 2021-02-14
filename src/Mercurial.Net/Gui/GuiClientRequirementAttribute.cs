@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This attribute can be applied to classes descending from <see cref="GuiCommandBase{T}"/>

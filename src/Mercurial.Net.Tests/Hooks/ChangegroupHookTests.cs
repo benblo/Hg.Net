@@ -1,7 +1,8 @@
 using System.Globalization;
+using Mercurial.Net;
 using NUnit.Framework;
 
-namespace Mercurial.Tests.Hooks
+namespace Mercurial.Net.Tests.Hooks
 {
     [TestFixture]
     [Category("Integration")]

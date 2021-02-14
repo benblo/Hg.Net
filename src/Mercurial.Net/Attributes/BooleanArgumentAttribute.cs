@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Attributes
+namespace Mercurial.Net.Attributes
 {
     /// <summary>
     /// This attribute can be applied to bool-properties in option classes,
@@ -71,7 +71,7 @@ namespace Mercurial.Attributes
         /// A collection of options or arguments, or an empty array or <c>null</c>
         /// for no options for the specified property value.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// BooleanArgumentAttribute applied to non-bool property.
         /// </exception>
         public override string[] GetOptions(object propertyValue, bool addExtraQuotes)

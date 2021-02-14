@@ -1,4 +1,4 @@
-namespace Mercurial.Extensions.Churn
+namespace Mercurial.Net.Extensions.Churn
 {
     /// <summary>
     /// This enum is used by the <see cref="ChurnCommand"/> class to specify what unit of measurement we're going to report in.

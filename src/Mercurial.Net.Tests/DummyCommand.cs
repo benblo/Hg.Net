@@ -1,4 +1,6 @@
-namespace Mercurial.Tests
+using Mercurial.Net;
+
+namespace Mercurial.Net.Tests
 {
     internal class DummyCommand : MercurialCommandBase<DummyCommand>
     {

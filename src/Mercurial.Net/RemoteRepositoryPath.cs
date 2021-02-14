@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates information about the path to a remote repository related to the current
@@ -28,7 +28,7 @@ namespace Mercurial
         /// <param name="path">
         /// The path to the remote repository.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>

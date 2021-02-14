@@ -4,13 +4,13 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Mercurial.Configuration;
-using Mercurial.Versions;
-using System.Text;
+using Mercurial.Net.Configuration;
+using Mercurial.Net.Versions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates the Mercurial client application.
@@ -126,7 +126,7 @@ namespace Mercurial
         /// <summary>
         /// Gets the current client configuration.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The Mercurial client configuration is not available because the client executable could not be located.
         /// </exception>
         public static ClientConfigurationCollection Configuration
@@ -193,10 +193,10 @@ namespace Mercurial
         /// The full path to the folder and file that is the
         /// Mercurial command line executable that should be used.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="clientPath"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="clientPath"/> does not point to the Mercurial executable.</para>
         /// </exception>
         public static void SetClientPath(string clientPath)
@@ -219,7 +219,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="System.Version"/> of the Mercurial client installed and in use.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>Unable to find or interpret version number from the Mercurial client.</para>
         /// </exception>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Since reading the version means executing an external program, a property is not the way to go.")]
@@ -246,7 +246,7 @@ namespace Mercurial
                         firstLine));
 
             string versionString = ma.Groups["version"].Value;
-            switch (versionString.Split('.').Length)
+            switch (versionString.Split(new[] {'.'}).Length)
             {
                 case 1:
                     return new Version(string.Format(CultureInfo.InvariantCulture, "{0}.0.0.0", versionString));
@@ -276,10 +276,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the init method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="location"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="RemoteInitCommand.Location"/> cannot be set before calling this method.</para>
         /// </exception>
         public static void RemoteInit(string location, RemoteInitCommand command = null)
@@ -301,7 +301,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the init method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public static void RemoteInit(RemoteInitCommand command)
@@ -368,7 +368,7 @@ namespace Mercurial
             if (string.IsNullOrEmpty(environmentPath))
                 return null;
 
-            return (from path in environmentPath.Split(';')
+            return (from path in environmentPath.Split(new[] {';'})
                     where !StringEx.IsNullOrWhiteSpace(path)
                     let executablePath = Path.Combine(path.Trim(), "hg.exe")
                     where File.Exists(executablePath)

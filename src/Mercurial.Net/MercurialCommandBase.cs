@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This is the base class for option classes for various commands for
@@ -20,7 +20,7 @@ namespace Mercurial
         /// <param name="command">
         /// The name of the command that will be passed to the Mercurial command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected MercurialCommandBase(string command)
@@ -42,7 +42,7 @@ namespace Mercurial
         /// <param name="value">
         /// The value.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="sectionName"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
@@ -63,7 +63,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// This method will check the current client version and throw a <see cref="NotSupportedException"/>
+        /// This method will check the current client version and throw a <see cref="System.NotSupportedException"/>
         /// if the current client version is older than the required one.
         /// </summary>
         /// <param name="requiredVersion">
@@ -73,7 +73,7 @@ namespace Mercurial
         /// A text message that identifies the item that requires the version. Will be part of the exception
         /// message as "The XYZ requires version A.B.C...".
         /// </param>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// <para>The current version is older than <paramref name="requiredVersion"/>.</para>
         /// </exception>
         public void RequiresVersion(Version requiredVersion, string whatRequiresTheSpecifiedVersion)

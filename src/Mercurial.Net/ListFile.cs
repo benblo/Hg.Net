@@ -4,9 +4,8 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class can be used internally by the other command classes, to provide support for a list of files

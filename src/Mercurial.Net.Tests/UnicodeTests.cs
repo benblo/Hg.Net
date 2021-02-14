@@ -1,11 +1,12 @@
-using System.Linq;
-using NUnit.Framework;
-using System.IO;
-using System.Text;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using Mercurial.Net;
+using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     public class UnicodeTests : SingleRepositoryTestsBase
@@ -25,6 +26,9 @@ namespace Mercurial.Tests
         {
             get
             {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                Encoding.GetEncoding("windows-1251");
+                
                 if (Encoding.Default == Encoding.GetEncoding("Windows-1251"))
                 {
                     yield return "Комментарий на русском языке";

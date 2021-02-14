@@ -1,7 +1,6 @@
 using System;
-using System.Diagnostics;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements <see cref="IClientFactory"/> by constructing either a
@@ -21,7 +20,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> implementation to use.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         public IClient CreateClient(string repositoryPath)
@@ -46,7 +45,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> to use to execute the command, and from now on.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="currentClient"/> is <c>null</c>.</para>
@@ -76,7 +75,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> to use from now on.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="currentClient"/> is <c>null</c>.</para>

@@ -1,7 +1,7 @@
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "hgignore" command (<see href="http://tortoisehg.bitbucket.org/manual/2.0/ignore.html#from-command-line"/>):

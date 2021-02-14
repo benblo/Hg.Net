@@ -1,4 +1,4 @@
-namespace Mercurial.Extensions.CaseGuard
+namespace Mercurial.Net.Extensions.CaseGuard
 {
     /// <summary>
     /// This class contains logic for the caseguard Mercurial extension.

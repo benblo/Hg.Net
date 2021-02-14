@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Mercurial.Configuration
+namespace Mercurial.Net.Configuration
 {
     /// <summary>
     /// This class encapsulates the Mercurial command line client configuration information.
@@ -76,7 +76,7 @@ namespace Mercurial.Configuration
         /// The value of the configuration entry, or <see cref="string.Empty"/>
         /// if no such value exists.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="sectionName"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
@@ -142,7 +142,7 @@ namespace Mercurial.Configuration
         /// <returns>
         /// A collection of configuration entry names for the given section.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="sectionName"/> is <c>null</c> or empty.</para>
         /// </exception>
         public IEnumerable<string> GetNamesForSection(string sectionName)
@@ -175,7 +175,7 @@ namespace Mercurial.Configuration
         /// <c>true</c> if the value was specified;
         /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="sectionName"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>

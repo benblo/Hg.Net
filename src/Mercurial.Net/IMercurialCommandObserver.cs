@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This interface must be implemented by an object that will act as an observer
@@ -8,7 +8,7 @@ namespace Mercurial
     {
         /// <summary>
         /// This method will be called once for each line of normal output from the command. Note that this method will be called on
-        /// a different thread than the thread that called the <see cref="NonPersistentClient.Execute(string,Mercurial.IMercurialCommand)"/> method.
+        /// a different thread than the thread that called the <see cref="NonPersistentClient.Execute(string,IMercurialCommand)"/> method.
         /// </summary>
         /// <param name="line">
         /// The line of text to output to the observer.
@@ -17,7 +17,7 @@ namespace Mercurial
 
         /// <summary>
         /// This method will be called once for each line of error output from the command. Note that this method will be called on
-        /// a different thread than the thread that called the <see cref="NonPersistentClient.Execute(string,Mercurial.IMercurialCommand)"/> method.
+        /// a different thread than the thread that called the <see cref="NonPersistentClient.Execute(string,IMercurialCommand)"/> method.
         /// </summary>
         /// <param name="line">
         /// The line of error text to output to the observer.

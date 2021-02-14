@@ -6,9 +6,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Extensions.Churn
+namespace Mercurial.Net.Extensions.Churn
 {
     /// <summary>
     /// This class implements the "hg churn" extension command (<see href="http://www.selenic.com/mercurial/hg.1.html#churn"/>):
@@ -95,7 +95,7 @@ namespace Mercurial.Extensions.Churn
         /// Gets or sets the timeout to use when executing Mercurial commands, in
         /// seconds. Default is 600 (10 minutes) for the <see cref="ChurnCommand"/>.
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><see cref="Timeout"/> cannot be less than 0.</para>
         /// </exception>
         [DefaultValue(600)]

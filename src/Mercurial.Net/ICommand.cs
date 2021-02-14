@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This interface must be implemented by all classes that implement the command

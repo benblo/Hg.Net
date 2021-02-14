@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This <see cref="IMercurialCommand"/> descendant interface must be implemented by

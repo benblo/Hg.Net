@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This interface will be returned from <see cref="Repository.BeginExecute{T}"/> in order to
@@ -14,7 +14,7 @@ namespace Mercurial
 // ReSharper restore UnusedTypeParameter
     {
         /// <summary>
-        /// Gets the inner <see cref="IAsyncResult"/> object.
+        /// Gets the inner <see cref="System.IAsyncResult"/> object.
         /// </summary>
         IAsyncResult InnerResult
         {

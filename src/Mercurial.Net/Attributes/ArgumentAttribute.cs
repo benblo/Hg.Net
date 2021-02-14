@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Attributes
+namespace Mercurial.Net.Attributes
 {
     /// <summary>
     /// This attribute can be applied to properties of command classes to provide

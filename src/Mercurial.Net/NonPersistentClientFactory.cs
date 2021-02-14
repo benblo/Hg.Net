@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements <see cref="IClientFactory"/> by always constructing objects
@@ -18,7 +18,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> implementation to use.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         public IClient CreateClient(string repositoryPath)

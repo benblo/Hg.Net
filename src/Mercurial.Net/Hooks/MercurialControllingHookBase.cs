@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This is the base class for Mercurial hook type implementations that are of type "controlling", that is
@@ -25,10 +25,10 @@ namespace Mercurial.Hooks
         /// <param name="message">
         /// A message to output to the Mercurial console log; or an empty string if no such message is needed.
         /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><paramref name="exitCode"/> must be 1 or higher.</para>
         /// </exception>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="message"/> is <c>null</c>.</para>
         /// </exception>
         public void TerminateHookAndCancelCommand(int exitCode, string message)
@@ -59,7 +59,7 @@ namespace Mercurial.Hooks
         /// <param name="exitCode">
         /// The exit code to pass back to Mercurial, must be or higher to signal failure. Default is 1.
         /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><paramref name="exitCode"/> must be 1 or higher.</para>
         /// </exception>
         public void TerminateHookAndCancelCommand(int exitCode)

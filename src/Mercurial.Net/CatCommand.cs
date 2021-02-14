@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg cat" command (<see href="http://www.selenic.com/mercurial/hg.1.html#cat"/>):
@@ -56,7 +56,7 @@ namespace Mercurial
         /// <remarks>
         /// This method is part of the fluent interface.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="value"/> is <c>null</c> or empty.</para>
         /// </exception>
         public CatCommand WithFile(string value)

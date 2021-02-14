@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg diff" command (<see href="http://www.selenic.com/mercurial/hg.1.html#diff"/>):
@@ -516,7 +516,7 @@ namespace Mercurial
         /// Note that as long as you descend from <see cref="MercurialCommandBase{T}"/> you're not required to call
         /// the base method at all.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The <see cref="ContextLineCount"/> property of the <see cref="DiffCommand"/> has to be 0 or higher.
         /// </exception>
         public override void Validate()

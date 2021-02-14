@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "import" command:

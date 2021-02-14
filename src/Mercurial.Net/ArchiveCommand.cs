@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg archive" command (<see href="http://www.selenic.com/mercurial/hg.1.html#archive"/>):
@@ -94,7 +94,7 @@ namespace Mercurial
 
         /// <summary>
         /// Gets or sets the type of archive to produce.
-        /// Default is <see cref="Mercurial.ArchiveType.Automatic"/>.
+        /// Default is <see cref="Net.ArchiveType.Automatic"/>.
         /// </summary>
         [EnumArgument(ArchiveType.Automatic, "")]
         [EnumArgument(ArchiveType.DirectoryWithFiles, "--type", "files")]
@@ -142,7 +142,7 @@ namespace Mercurial
 
         /// <summary>
         /// Gets or sets the destination to archive typ, either the directory (if <see cref="ArchiveType"/> is
-        /// <see cref="Mercurial.ArchiveType.DirectoryWithFiles"/>) or the full path to and name of the archive file
+        /// <see cref="Net.ArchiveType.DirectoryWithFiles"/>) or the full path to and name of the archive file
         /// (for all other <see cref="ArchiveType"/>s of archives.)
         /// Default value is <see cref="string.Empty"/>.
         /// </summary>
@@ -281,7 +281,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><see cref="Destination"/> is <c>null</c> or empty.</para>
         /// </exception>
         public override void Validate()

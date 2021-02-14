@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This is the base class for Mercurial hook type implementations.

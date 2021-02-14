@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Mercurial.Net;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]

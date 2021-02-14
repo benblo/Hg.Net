@@ -1,4 +1,4 @@
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "guess" command (<see href="http://tortoisehg.bitbucket.org/manual/2.0/guess.html#from-command-line"/>):

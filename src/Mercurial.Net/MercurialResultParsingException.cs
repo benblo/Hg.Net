@@ -2,7 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// Represents a problem with the results returned from executing the Mercurial command, in the sense
@@ -20,16 +20,16 @@ namespace Mercurial
         /// Initializes a new instance of the <see cref="MercurialResultParsingException"/> class.
         /// </summary>
         /// <param name="info">
-        /// The <see cref="SerializationInfo"/> that holds the serialized object data about the exception being thrown.
+        /// The <see cref="System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.
         /// </param>
         /// <param name="context">
-        /// The <see cref="StreamingContext"/> that contains contextual information about the source or destination.
+        /// The <see cref="System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// The <paramref name="info"/> parameter is null.
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// The class name is null or <see cref="Exception.HResult"/> is zero (0).
+        /// <exception cref="System.Runtime.Serialization.SerializationException">
+        /// The class name is null or <see cref="System.Exception.HResult"/> is zero (0).
         /// </exception>
         protected MercurialResultParsingException(SerializationInfo info, StreamingContext context)
             : base(info, context)

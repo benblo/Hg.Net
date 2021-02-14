@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Mercurial.Attributes
+namespace Mercurial.Net.Attributes
 {
     /// <summary>
     /// This attribute can be applied to collection-properties in option classes,

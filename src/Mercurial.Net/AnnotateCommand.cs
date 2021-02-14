@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg annotate" command (<see href="http://www.selenic.com/mercurial/hg.1.html#annotate"/>):
@@ -90,7 +90,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The 'annotate' command requires Path to be set.
         /// </exception>
         public override void Validate()

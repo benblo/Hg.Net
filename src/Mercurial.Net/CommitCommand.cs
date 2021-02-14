@@ -5,11 +5,10 @@ using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg commit" command (<see href="http://www.selenic.com/mercurial/hg.1.html#commit"/>):
@@ -109,7 +108,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets or sets the timestamp <see cref="DateTime"/> to use when committing;
+        /// Gets or sets the timestamp <see cref="System.DateTime"/> to use when committing;
         /// or <c>null</c> which means use the current date and time. Default is <c>null</c>.
         /// </summary>
         [DateTimeArgument(NonNullOption = "--date")]
@@ -168,7 +167,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The 'commit' command requires <see cref="Message"/> to be specified.
         /// </exception>
         public override void Validate()
@@ -302,7 +301,7 @@ namespace Mercurial
         /// <remarks>
         /// This method is part of the fluent interface.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="value"/> is <c>null</c> or empty.</para>
         /// </exception>
         public CommitCommand WithPath(string value)

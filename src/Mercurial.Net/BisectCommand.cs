@@ -2,9 +2,9 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg bisect" command (<see href="http://www.selenic.com/mercurial/hg.1.html#bisect"/>):
@@ -111,7 +111,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">The State property must be set to something other than None before executing a BisectCommand</exception>
+        /// <exception cref="System.InvalidOperationException">The State property must be set to something other than None before executing a BisectCommand</exception>
         public override void Validate()
         {
             base.Validate();

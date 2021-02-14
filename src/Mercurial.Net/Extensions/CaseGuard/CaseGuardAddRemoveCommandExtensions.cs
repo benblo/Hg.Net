@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Extensions.CaseGuard
+namespace Mercurial.Net.Extensions.CaseGuard
 {
     /// <summary>
     /// This class adds extension methods to the <see cref="AddRemoveCommand"/> class, for
@@ -18,10 +18,10 @@ namespace Mercurial.Extensions.CaseGuard
         /// The specified <see cref="AddRemoveCommand"/> <paramref name="command"/> object, for the
         /// fluent interface.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The CaseGuard extension is not installed and active.
         /// </exception>
         public static AddRemoveCommand WithOverrideCaseCollision(this AddRemoveCommand command)
@@ -45,10 +45,10 @@ namespace Mercurial.Extensions.CaseGuard
         /// The specified <see cref="AddRemoveCommand"/> <paramref name="command"/> object, for the
         /// fluent interface.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The CaseGuard extension is not installed and active.
         /// </exception>
         public static AddRemoveCommand WithoutWindowsFileNameChecks(this AddRemoveCommand command)
@@ -72,10 +72,10 @@ namespace Mercurial.Extensions.CaseGuard
         /// The specified <see cref="AddRemoveCommand"/> <paramref name="command"/> object, for the
         /// fluent interface.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The CaseGuard extension is not installed and active.
         /// </exception>
         public static AddRemoveCommand WithoutCaseGuarding(this AddRemoveCommand command)

@@ -1,7 +1,8 @@
 using System.IO;
+using Mercurial.Net;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     public class MoveTests : SingleRepositoryTestsBase

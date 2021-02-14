@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates a single line of configuration information from the
@@ -35,7 +35,7 @@ namespace Mercurial
         /// <param name="value">
         /// The value of the configuration entry.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="section"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>

@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class is used as the result of executing the <see cref="BisectCommand"/>.
@@ -37,7 +37,7 @@ namespace Mercurial
         /// repository; otherwise <paramref name="revision"/> specifies the current changeset that should
         /// be tested and marked good or bad by executing another <see cref="BisectCommand"/>.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
         /// </exception>
         public BisectResult(RevSpec revision, bool done)

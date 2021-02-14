@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace Mercurial.Versions
+namespace Mercurial.Net.Versions
 {
     /// <summary>
     /// This attribute can be applied to <see cref="MercurialVersionBase"/> descendants
@@ -31,7 +31,7 @@ namespace Mercurial.Versions
         /// <param name="toVersionString">
         /// The upper-bound of the supported version, inclusive.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="fromVersionString"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="toVersionString"/> is <c>null</c>.</para>
@@ -54,7 +54,7 @@ namespace Mercurial.Versions
         /// <param name="versionString">
         /// The lower-bound and upper-bound of the supported version, inclusive.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="versionString"/> is <c>null</c>.</para>
         /// </exception>
         [SuppressMessage("Microsoft.Naming", "CA1720:IdentifiersShouldNotContainTypeNames", MessageId = "string", Justification = "There are multiple ways to access the same version here, as a Version and as a string, keeping the name as-is.")]
@@ -76,10 +76,10 @@ namespace Mercurial.Versions
         }
 
         /// <summary>
-        /// Gets the <see cref="FromVersionString"/> as a properly formatted <see cref="Version"/>, with missing
+        /// Gets the <see cref="FromVersionString"/> as a properly formatted <see cref="System.Version"/>, with missing
         /// pieces appropriately set.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// Incorrect format for <see cref="FromVersionString"/>.
         /// </exception>
         public Version FromVersion
@@ -139,10 +139,10 @@ namespace Mercurial.Versions
         }
 
         /// <summary>
-        /// Gets the <see cref="ToVersionString"/> as a properly formatted <see cref="Version"/>, with missing
+        /// Gets the <see cref="ToVersionString"/> as a properly formatted <see cref="System.Version"/>, with missing
         /// pieces appropriately set.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// Incorrect format for <see cref="ToVersionString"/>.
         /// </exception>
         public Version ToVersion
@@ -200,7 +200,7 @@ namespace Mercurial.Versions
         /// <c>true</c> if <paramref name="version"/> is between <see cref="FromVersionString"/> and <see cref="ToVersionString"/>,
         /// inclusive; otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="version"/> is <c>null</c>.</para>
         /// </exception>
         public bool IsMatch(Version version)
@@ -220,7 +220,7 @@ namespace Mercurial.Versions
         /// <returns>
         /// A 32-bit signed integer that indicates the relative order of the objects being compared.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// Comparison only handles encapsulating overlaps.
         /// </exception>
         public int CompareTo(MercurialVersionAttribute other)
@@ -276,7 +276,7 @@ namespace Mercurial.Versions
         /// true if <paramref name="obj"/> equals the type and value of this instance; otherwise, false.
         /// </returns>
         /// <param name="obj">
-        /// An <see cref="Object"/> to compare with this instance or null. 
+        /// An <see cref="object"/> to compare with this instance or null. 
         /// </param>
         public override bool Equals(object obj)
         {

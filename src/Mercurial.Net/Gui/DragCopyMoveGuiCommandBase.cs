@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This is the base class for <see cref="DragCopyGuiCommand"/> and <see cref="DragMoveGuiCommand"/>.
@@ -31,7 +31,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The name of the command that will be passed to the TortoiseHg command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected DragCopyMoveGuiCommandBase(string command)
@@ -115,7 +115,7 @@ namespace Mercurial.Gui
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>At least one file in <see cref="SourceFiles"/> has to be specified.</para>
         /// <para>- or -</para>
         /// <para><see cref="Destination"/> has to be specified.</para>

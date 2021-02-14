@@ -1,9 +1,10 @@
 using System;
 using System.IO;
 using System.Linq;
+using Mercurial.Net;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     public class AddTests : SingleRepositoryTestsBase

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg remove" command (<see href="http://www.selenic.com/mercurial/hg.1.html#remove"/>):
@@ -128,7 +128,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The 'remove' command requires at least one path specified in <see cref="Paths"/>, unless <see cref="RecordDeletes"/> is true.
         /// </exception>
         public override void Validate()

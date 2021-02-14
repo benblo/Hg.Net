@@ -1,4 +1,4 @@
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This enum is used by <see cref="GuiClient"/> to specify which client to use.

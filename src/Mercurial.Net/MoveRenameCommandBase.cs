@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class serves as a base class for the <see cref="MoveCommand"/> and <see cref="RenameCommand"/> classes.
@@ -32,7 +32,7 @@ namespace Mercurial
         /// <param name="command">
         /// The name of the command that will be passed to the Mercurial command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected MoveRenameCommandBase(string command)
@@ -220,7 +220,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><see cref="Source"/> is empty.</para>
         /// <para>- or -</para>
         /// <para><see cref="Destination"/> is empty.</para>

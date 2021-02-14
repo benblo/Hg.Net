@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// Specifies a set of revisions, typically used to extract only
@@ -13,7 +13,7 @@ namespace Mercurial
     public sealed class RevSpec : IEquatable<RevSpec>
     {
         /// <summary>
-        /// This field holds the <see cref="Regex"/> for identifying a valid changeset hash.
+        /// This field holds the <see cref="System.Text.RegularExpressions.Regex"/> for identifying a valid changeset hash.
         /// </summary>
         private static readonly Regex _HashRegex = new Regex(@"^[a-f0-9]{1,40}$", RegexOptions.IgnoreCase);
 
@@ -224,7 +224,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> that selects the first N changesets of this set.
         /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><paramref name="amount"/> is less than 1.</para>
         /// </exception>
         public RevSpec Limit(int amount)
@@ -318,7 +318,7 @@ namespace Mercurial
         /// A new <see cref="RevSpec"/> that matches changesets that add a file with a name that
         /// matches the specified pattern.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="pattern"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Adds(string pattern)
@@ -340,7 +340,7 @@ namespace Mercurial
         /// A new <see cref="RevSpec"/> that matches changeset that contains a file with a name that
         /// matches the specified pattern.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="pattern"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Contains(string pattern)
@@ -362,7 +362,7 @@ namespace Mercurial
         /// A new <see cref="RevSpec"/> that matches changesets that contains affects a file with a name that
         /// matches the specified pattern.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="pattern"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Affects(string pattern)
@@ -384,7 +384,7 @@ namespace Mercurial
         /// A new <see cref="RevSpec"/> that matches changesets that contains modifies a file with a name that
         /// matches the specified pattern.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="pattern"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Modifies(string pattern)
@@ -425,7 +425,7 @@ namespace Mercurial
         /// A new <see cref="RevSpec"/> that matches changesets that has a commit message,
         /// author name or names of changed files that matches the pattern.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="pattern"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Keyword(string pattern)
@@ -447,7 +447,7 @@ namespace Mercurial
         /// A new <see cref="RevSpec"/> that matches changesets that has a commit message,
         /// author name or names of changed files that matches the regular expression pattern.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="pattern"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Grep(string pattern)
@@ -472,7 +472,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> with the specified range.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="from"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="to"/> is <c>null</c>.</para>
@@ -495,7 +495,7 @@ namespace Mercurial
         /// The <see cref="RevSpec"/> set to negate.
         /// </param>
         /// <returns>The result of the operator.</returns>
-        /// <exception cref="ArgumentNullException"><paramref name="set" /> is <c>null</c>.</exception>
+        /// <exception cref="System.ArgumentNullException"><paramref name="set" /> is <c>null</c>.</exception>
         public static RevSpec operator !(RevSpec set)
         {
             if (set == null)
@@ -516,7 +516,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> with the specified range.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public static RevSpec From(RevSpec revSpec)
@@ -540,7 +540,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> with the specified range.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public static RevSpec To(RevSpec revSpec)
@@ -561,7 +561,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> with the specified range.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public static RevSpec DescendantsOf(RevSpec revSpec)
@@ -588,7 +588,7 @@ namespace Mercurial
         /// A <see cref="RevSpec"/> that includes the changeset that is the common
         /// ancestor of both <paramref name="single1"/> and <paramref name="single2"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="single1"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="single2"/> is <c>null</c>.</para>
@@ -613,7 +613,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> with the specified range.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public static RevSpec AncestorsOf(RevSpec revSpec)
@@ -638,7 +638,7 @@ namespace Mercurial
         /// The <see cref="RevSpec"/> that includes the greatest common
         /// ancestor of the two changesets.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revision1"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="revision2"/> is <c>null</c>.</para>
@@ -691,7 +691,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> with the specified range.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="from"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="to"/> is <c>null</c>.</para>
@@ -707,10 +707,10 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// Returns a <see cref="string"/> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
+        /// A <see cref="string"/> that represents this instance.
         /// </returns>
         public override string ToString()
         {
@@ -728,7 +728,7 @@ namespace Mercurial
         /// The revision specification for a revision selected by
         /// its locally unique revision number.
         /// </returns>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><paramref name="revision"/> is less than 0.</para>
         /// </exception>
         public static RevSpec Single(int revision)
@@ -749,10 +749,10 @@ namespace Mercurial
         /// The revision specification for a revision selected by
         /// its globally unique hash.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="hash"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="hash"/> does not contain a valid hexadecimal number of maximum 40 digits.</para>
         /// </exception>
         public static RevSpec Single(string hash)
@@ -775,7 +775,7 @@ namespace Mercurial
         /// The revision specification for the changeset with the given identifying
         /// id.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="id"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec ById(string id)
@@ -811,7 +811,7 @@ namespace Mercurial
         /// The revision specification for the tipmost revision that
         /// belongs to the named branch.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec ByBranch(string name)
@@ -831,7 +831,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> that selects all changesets in the specified branch.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec InBranch(string name)
@@ -852,7 +852,7 @@ namespace Mercurial
         /// The revision specification for the revision that has
         /// the specified tag.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec ByTag(string name)
@@ -872,7 +872,7 @@ namespace Mercurial
         /// <returns>
         /// The revision specification for all changesets committed by the specified user.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec ByUser(string name)
@@ -903,7 +903,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> that selects the changeset with the specified tag.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Tagged(string name)
@@ -915,7 +915,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.Int32"/> to <see cref="RevSpec"/>
+        /// Performs an implicit conversion from <see cref="int"/> to <see cref="RevSpec"/>
         /// by using the number as the revision number.
         /// </summary>
         /// <param name="revisionNumber">The revision number.</param>
@@ -926,11 +926,11 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="System.String"/> to <see cref="RevSpec"/>
+        /// Performs an implicit conversion from <see cref="string"/> to <see cref="RevSpec"/>
         /// by using the string as the revision hash.
         /// </summary>
         /// <param name="hash">
-        /// The changeset hash <see cref="String"/> to convert to a <see cref="RevSpec"/>.
+        /// The changeset hash <see cref="string"/> to convert to a <see cref="RevSpec"/>.
         /// </param>
         /// <returns>The result of the conversion.</returns>
         public static implicit operator RevSpec(string hash)
@@ -939,7 +939,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="RevSpec"/> to <see cref="System.String"/>
+        /// Performs an implicit conversion from <see cref="RevSpec"/> to <see cref="string"/>
         /// by calling the <see cref="ToString"/> method.
         /// </summary>
         /// <param name="revSpec">The revisions.</param>
@@ -960,7 +960,7 @@ namespace Mercurial
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        /// <exception cref="ArgumentException">At least one of the revisions in a &amp; expression must be non-null</exception>
+        /// <exception cref="System.ArgumentException">At least one of the revisions in a &amp; expression must be non-null</exception>
         public static RevSpec operator &(RevSpec revision1, RevSpec revision2)
         {
             if (revision1 == null && revision2 == null)
@@ -981,7 +981,7 @@ namespace Mercurial
         /// <returns>
         /// The result of the operator.
         /// </returns>
-        /// <exception cref="ArgumentException">At least one of the revisions in a | expression must be non-null</exception>
+        /// <exception cref="System.ArgumentException">At least one of the revisions in a | expression must be non-null</exception>
         public static RevSpec operator |(RevSpec revision1, RevSpec revision2)
         {
             if (revision1 == null && revision2 == null)
@@ -1005,7 +1005,7 @@ namespace Mercurial
         /// A revision specification that selects all the changesets in this
         /// <see cref="RevSpec"/>, but not in <paramref name="revSpec"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public RevSpec Except(RevSpec revSpec)
@@ -1027,7 +1027,7 @@ namespace Mercurial
         /// A revision specification that selects all changesets that are both in this <see cref="RevSpec"/>
         /// and also in <paramref name="revSpec"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public RevSpec And(RevSpec revSpec)
@@ -1048,7 +1048,7 @@ namespace Mercurial
         /// <returns>
         /// The formatted <see cref="RevSpec"/> value, possibly with added parenthesis around it.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         private static string ApplyParenthesis(RevSpec revSpec)
@@ -1114,7 +1114,7 @@ namespace Mercurial
         /// A revision specification that selects all changesets that are either in this <see cref="RevSpec"/>
         /// or in <paramref name="revSpec"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revSpec"/> is <c>null</c>.</para>
         /// </exception>
         public RevSpec Or(RevSpec revSpec)
@@ -1135,7 +1135,7 @@ namespace Mercurial
         /// A revision specification that selects all changesets committed
         /// by the specified <paramref name="name"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Author(string name)
@@ -1156,7 +1156,7 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="RevSpec"/> including the changeset with the specified bookmark.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static RevSpec Bookmark(string name)

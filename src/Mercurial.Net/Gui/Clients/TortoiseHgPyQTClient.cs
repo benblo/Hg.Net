@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Mercurial.Gui.Clients
+namespace Mercurial.Net.Gui.Clients
 {
     /// <summary>
     /// This <see cref="TortoiseHgClient"/> descendant implements specific methods for the PyQT (thg) version of TortoiseHg.
@@ -24,7 +24,7 @@ namespace Mercurial.Gui.Clients
         }
 
         /// <summary>
-        /// Gets the <see cref="Encoding"/> to use when saving the file list to disk.
+        /// Gets the <see cref="System.Text.Encoding"/> to use when saving the file list to disk.
         /// </summary>
         public override Encoding FileListEncoding
         {

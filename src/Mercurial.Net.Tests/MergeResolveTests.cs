@@ -1,4 +1,4 @@
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     public class MergeResolveTests : SingleRepositoryTestsBase
     {

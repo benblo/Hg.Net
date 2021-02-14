@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "clone" command (<see href="http://tortoisehg.bitbucket.org/manual/2.0/clone.html#from-command-line"/>):
@@ -366,7 +366,7 @@ namespace Mercurial.Gui
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The 'clone' command requires <see cref="Source"/> to be specified.
         /// </exception>
         public override void Validate()

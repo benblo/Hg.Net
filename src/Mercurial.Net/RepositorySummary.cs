@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class contains a summary of the repository state, as returned by the
@@ -26,7 +26,7 @@ namespace Mercurial
         /// <returns>
         /// The resulting <see cref="RepositorySummary"/> from parsing <paramref name="standardOutput"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="standardOutput"/> is <c>null</c>.</para>
         /// </exception>
         public static RepositorySummary Parse(string standardOutput)
@@ -75,7 +75,7 @@ namespace Mercurial
         /// The line for which the parse method was called.
         /// </param>
         /// <param name="match">
-        /// The <see cref="Match"/> object resulting in matching up a regular expression with the line.
+        /// The <see cref="System.Text.RegularExpressions.Match"/> object resulting in matching up a regular expression with the line.
         /// </param>
         private static void ParseBranch(RepositorySummary summary, string line, Match match)
         {
@@ -92,7 +92,7 @@ namespace Mercurial
         /// The line for which the parse method was called.
         /// </param>
         /// <param name="match">
-        /// The <see cref="Match"/> object resulting in matching up a regular expression with the line.
+        /// The <see cref="System.Text.RegularExpressions.Match"/> object resulting in matching up a regular expression with the line.
         /// </param>
         private static void ParseParents(RepositorySummary summary, string line, Match match)
         {
@@ -110,7 +110,7 @@ namespace Mercurial
         /// The line for which the parse method was called.
         /// </param>
         /// <param name="match">
-        /// The <see cref="Match"/> object resulting in matching up a regular expression with the line.
+        /// The <see cref="System.Text.RegularExpressions.Match"/> object resulting in matching up a regular expression with the line.
         /// </param>
         private static void ParseUpdate(RepositorySummary summary, string line, Match match)
         {
@@ -130,7 +130,7 @@ namespace Mercurial
         /// The line for which the parse method was called.
         /// </param>
         /// <param name="match">
-        /// The <see cref="Match"/> object resulting in matching up a regular expression with the line.
+        /// The <see cref="System.Text.RegularExpressions.Match"/> object resulting in matching up a regular expression with the line.
         /// </param>
         private static void ParseCommit(RepositorySummary summary, string line, Match match)
         {

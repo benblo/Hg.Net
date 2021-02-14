@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Mercurial.Gui.Clients
+namespace Mercurial.Net.Gui.Clients
 {
     /// <summary>
     /// This class, and its descendants implement specific handling for the specific type of clients.
@@ -28,7 +28,7 @@ namespace Mercurial.Gui.Clients
         /// <param name="clientType">
         /// The <see cref="GuiClientType"/> to assign the client for.
         /// </param>
-        /// <exception cref="InvalidOperationException">Internal error, unknown client type passed to TortoiseHgClient.AssignCurrent</exception>
+        /// <exception cref="System.InvalidOperationException">Internal error, unknown client type passed to TortoiseHgClient.AssignCurrent</exception>
         internal static void AssignCurrent(GuiClientType clientType)
         {
             switch (clientType)
@@ -55,7 +55,7 @@ namespace Mercurial.Gui.Clients
         /// <param name="filename">
         /// The full path to and name of the file to write the <paramref name="files"/> to.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="files"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void SaveFileList(IEnumerable<string> files, string filename)
@@ -108,7 +108,7 @@ namespace Mercurial.Gui.Clients
         }
 
         /// <summary>
-        /// Gets the <see cref="Encoding"/> to use when saving the file list to disk.
+        /// Gets the <see cref="System.Text.Encoding"/> to use when saving the file list to disk.
         /// </summary>
         public abstract Encoding FileListEncoding
         {

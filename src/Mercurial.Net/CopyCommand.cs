@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg copy" command (<see href="http://www.selenic.com/mercurial/hg.1.html#copy"/>):
@@ -116,7 +116,7 @@ namespace Mercurial
         /// Note that as long as you descend from <see cref="MercurialCommandBase{T}"/> you're not required to call
         /// the base method at all.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The 'copy' command requires Destination to be specified.
         /// </exception>
         public override void Validate()

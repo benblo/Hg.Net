@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg tip" command (<see href="http://www.selenic.com/mercurial/hg.1.html#tip"/>):

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg unbundle" command (<see href="http://www.selenic.com/mercurial/hg.1.html#unbundle"/>):
@@ -64,7 +64,7 @@ namespace Mercurial
         /// <remarks>
         /// This method is part of the fluent interface.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="value"/> is <c>null</c> or empty.</para>
         /// </exception>
         public UnbundleCommand WithFileName(string value)
@@ -105,7 +105,7 @@ namespace Mercurial
         /// Note that as long as you descend from <see cref="MercurialCommandBase{T}"/> you're not required to call
         /// the base method at all.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <see cref="FileNames"/> cannot be an empty collection.
         /// </exception>
         public override void Validate()

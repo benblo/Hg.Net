@@ -1,8 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This <see cref="MercurialHookBase"/> descendant implements the

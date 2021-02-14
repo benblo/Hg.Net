@@ -21,7 +21,7 @@
 
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
 	/// <summary>
 	/// A mercurial command exception

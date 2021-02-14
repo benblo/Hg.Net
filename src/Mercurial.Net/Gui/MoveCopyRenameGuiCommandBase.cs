@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This is the base class for <see cref="MoveGuiCommand"/>, <see cref="CopyGuiCommand"/> and <see cref="RenameGuiCommand"/>:
@@ -29,7 +29,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The name of the command that will be passed to the TortoiseHg command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected MoveCopyRenameGuiCommandBase(string command)

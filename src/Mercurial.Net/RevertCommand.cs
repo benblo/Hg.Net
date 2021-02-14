@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg revert" command (<see href="http://www.selenic.com/mercurial/hg.1.html#revert"/>):
@@ -56,7 +56,7 @@ namespace Mercurial
         /// <remarks>
         /// This method is part of the fluent interface.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="value"/> is <c>null</c> or empty.</para>
         /// </exception>
         public RevertCommand WithName(string value)
@@ -107,7 +107,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="DateTime"/> value to revert the files to;
+        /// Gets or sets the <see cref="System.DateTime"/> value to revert the files to;
         /// or <c>null</c> to not use date-specification.
         /// Default value is <c>null</c>.
         /// </summary>
@@ -185,7 +185,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><see cref="Names"/> is empty.</para>
         /// </exception>
         public override void Validate()

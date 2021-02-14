@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg tag" command (<see href="http://www.selenic.com/mercurial/hg.1.html#tag"/>):
@@ -142,7 +142,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets or sets the timestamp <see cref="DateTime"/> to use when committing;
+        /// Gets or sets the timestamp <see cref="System.DateTime"/> to use when committing;
         /// or <c>null</c> which means use the current date and time. Default is <c>null</c>.
         /// </summary>
         [DateTimeArgument(NonNullOption = "--date")]
@@ -325,7 +325,7 @@ namespace Mercurial
         /// exceptions to signal missing or incorrect configuration (like attempting to
         /// add files to the repository without specifying which files to add.)
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The <see cref="Name"/> of the tag to add or remove must be set for TagCommand.
         /// </exception>
         /// <remarks>

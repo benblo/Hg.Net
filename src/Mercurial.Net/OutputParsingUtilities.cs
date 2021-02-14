@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class holds utility methods for parsing the output from the Mercurial commands.
@@ -18,7 +18,7 @@ namespace Mercurial
         /// <returns>
         /// An array of strings, one for each line in the <paramref name="output"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="output"/> is <c>null</c>.</para>
         /// </exception>
         public static string[] SplitIntoLines(string output)

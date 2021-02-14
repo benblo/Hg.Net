@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using Mercurial.Attributes;
-using Mercurial.Versions;
+using Mercurial.Net.Attributes;
+using Mercurial.Net.Versions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg backout" command (<see href="http://www.selenic.com/mercurial/hg.1.html#backout"/>):
@@ -139,7 +139,7 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Gets or sets the timestamp <see cref="DateTime"/> to use when committing;
+        /// Gets or sets the timestamp <see cref="System.DateTime"/> to use when committing;
         /// or <c>null</c> which means use the current date and time. Default is <c>null</c>.
         /// </summary>
         [DateTimeArgument(NonNullOption = "--date")]

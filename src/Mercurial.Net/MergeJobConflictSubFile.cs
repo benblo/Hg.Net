@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used by <see cref="MergeJobConflict"/> to get paths to and contents of the

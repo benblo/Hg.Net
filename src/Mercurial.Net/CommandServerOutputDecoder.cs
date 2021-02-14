@@ -1,9 +1,8 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Text;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class is responsible for decoding the output from the Mercurial
@@ -16,7 +15,7 @@ namespace Mercurial
         /// separate standard output, standard error and the exit code.
         /// </summary>
         /// <param name="reader">
-        /// The <see cref="StreamReader"/> that output is read from.
+        /// The <see cref="System.IO.StreamReader"/> that output is read from.
         /// </param>
         /// <param name="standardOutput">
         /// Upon exit, if the method returns <c>true</c>, then this parameter has been
@@ -34,7 +33,7 @@ namespace Mercurial
         /// <c>true</c> if the output was successfully decoded;
         /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="reader"/> is <c>null</c>.</para>
         /// </exception>
         public static bool GetOutput(StreamReader reader, out string standardOutput, out string standardError, out int exitCode)
@@ -77,7 +76,7 @@ namespace Mercurial
         /// Decodes one block of output from the reader.
         /// </summary>
         /// <param name="reader">
-        /// The <see cref="StreamReader"/> to decode a block from.
+        /// The <see cref="System.IO.StreamReader"/> to decode a block from.
         /// </param>
         /// <param name="type">
         /// Upon return from the method, if the method returns <c>true</c>, then
@@ -96,7 +95,7 @@ namespace Mercurial
         /// <c>true</c> if the output was successfully decoded;
         /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="reader"/> is <c>null</c>.</para>
         /// </exception>
         public static bool DecodeOneBlock(StreamReader reader, out char type, out string content, out int exitCode)
@@ -132,10 +131,10 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Decodes and returns a single string from the <see cref="StreamReader"/>.
+        /// Decodes and returns a single string from the <see cref="System.IO.StreamReader"/>.
         /// </summary>
         /// <param name="reader">
-        /// The <see cref="StreamReader"/> to decode the string from.
+        /// The <see cref="System.IO.StreamReader"/> to decode the string from.
         /// </param>
         /// <returns>
         /// The decoded string or <c>null</c> if the data could not be decoded.
@@ -167,10 +166,10 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Decodes and returns a single 32-bit integer from the <see cref="StreamReader"/>.
+        /// Decodes and returns a single 32-bit integer from the <see cref="System.IO.StreamReader"/>.
         /// </summary>
         /// <param name="reader">
-        /// The <see cref="StreamReader"/> to decode the 32-bit integer from.
+        /// The <see cref="System.IO.StreamReader"/> to decode the 32-bit integer from.
         /// </param>
         /// <returns>
         /// The decoded integer, or -1 if the data could not be decoded.

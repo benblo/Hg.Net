@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg status" command (<see href="http://www.selenic.com/mercurial/hg.1.html#status"/>):
@@ -94,7 +94,7 @@ namespace Mercurial
         /// </summary>
         /// <param name="exitCode">The exit code.</param>
         /// <param name="standardOutput">The standard output.</param>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>Status does not yet support the Added sub-state to show where the file was added from.</para>
         /// <para>- or -</para>
         /// <para>An unknown status character was detected in the command output.</para>

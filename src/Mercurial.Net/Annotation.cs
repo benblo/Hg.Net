@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This object contains information about an annotated line from a text file
@@ -38,10 +38,10 @@ namespace Mercurial
         /// <param name="line">
         /// The line that was annotated.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="line"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><paramref name="lineNumber"/> cannot be negative.</para>
         /// <para>- or -</para>
         /// <para><paramref name="revisionNumber"/> cannot be negative.</para>

@@ -1,4 +1,4 @@
-namespace Mercurial.Extensions.Churn
+namespace Mercurial.Net.Extensions.Churn
 {
     /// <summary>
     /// This class is returned by the <see cref="ChurnCommand"/>.

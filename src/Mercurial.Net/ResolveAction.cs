@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used by <see cref="ResolveCommand"/>.<see cref="ResolveCommand.Action">Action</see> to specify

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using Mercurial.Attributes;
+using Mercurial.Net;
+using Mercurial.Net.Attributes;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]

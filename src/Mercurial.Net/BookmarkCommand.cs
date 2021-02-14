@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg bookmark" command (<see href="http://www.selenic.com/mercurial/hg.1.html#bookmark"/>):
@@ -167,7 +167,7 @@ namespace Mercurial
         /// the base property at all, but you are required to return a non-<c>null</c> array reference,
         /// even for an empty array.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><see cref="Action"/> has an invalid value.</para>
         /// </exception>
         public override IEnumerable<string> Arguments
@@ -221,7 +221,7 @@ namespace Mercurial
         /// Note that as long as you descend from <see cref="MercurialCommandBase{T}"/> you're not required to call
         /// the base method at all.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><see cref="Name"/> is empty.</para>
         /// <para>- or -</para>
         /// <para><see cref="Action"/> is <see cref="BookmarkAction.RenameExisting"/> but <see cref="RenameFrom"/> is empty.</para>

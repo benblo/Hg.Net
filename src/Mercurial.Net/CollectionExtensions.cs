@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
-    /// This class contains extension methods for <see cref="Collection{T}"/>.
+    /// This class contains extension methods for <see cref="System.Collections.ObjectModel.Collection{T}"/>.
     /// </summary>
     public static class CollectionExtensions
     {
@@ -21,7 +21,7 @@ namespace Mercurial
         /// <param name="source">
         /// The collection to add elements from.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="target"/> is <c>null</c>.</para>
         /// </exception>
         public static void AddRange<T>(this Collection<T> target, IEnumerable<T> source)

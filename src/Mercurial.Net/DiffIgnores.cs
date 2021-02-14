@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used by the <see cref="DiffCommand"/>.<see cref="DiffCommand.Ignore">Ignore</see> property

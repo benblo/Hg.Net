@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This is the base class for option classes for various commands for
@@ -50,7 +50,7 @@ namespace Mercurial
         /// <param name="command">
         /// The name of the command that will be passed to the Mercurial or TortoiseHg command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected CommandBase(string command)
@@ -236,7 +236,7 @@ namespace Mercurial
         /// Gets or sets the timeout to use when executing Mercurial commands, in
         /// seconds. Default is 60.
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><see cref="Timeout"/> cannot be less than 0.</para>
         /// </exception>
         [DefaultValue(60)]
@@ -266,7 +266,7 @@ namespace Mercurial
         }
 
         /// <inheritdoc/>
-        [DefaultValueAttribute(false)]
+        [DefaultValue(false)]
         public bool UseInPersistentClient
         {
             get; set;
@@ -286,7 +286,7 @@ namespace Mercurial
             /// <remarks>
             /// This method is part of the fluent interface.
             /// </remarks>
-            /// <exception cref="ArgumentNullException">
+            /// <exception cref="System.ArgumentNullException">
             /// <para><paramref name="value"/> is <c>null</c> or empty.</para>
             /// </exception>
         public T WithAdditionalArgument(string value)
@@ -378,7 +378,7 @@ namespace Mercurial
         /// <param name="argument">
         /// The argument to add to <see cref="AdditionalArguments"/>.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="argument"/> is <c>null</c> or empty.</para>
         /// </exception>
         [EditorBrowsable(EditorBrowsableState.Never)]

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Mercurial.Gui;
+using Mercurial.Net;
+using Mercurial.Net.Gui;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.All)]

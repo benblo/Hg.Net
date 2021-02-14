@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
-namespace Mercurial.Versions
+namespace Mercurial.Net.Versions
 {
     /// <summary>
     /// This base class handles Mercurial &lt; 1.8.
@@ -19,7 +19,7 @@ namespace Mercurial.Versions
         /// <param name="repositoryPath">
         /// The path to the repository that the locks exists in.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         public override void WaitForLocksToDissipate(string repositoryPath)

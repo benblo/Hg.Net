@@ -1,4 +1,4 @@
-namespace Mercurial.Extensions.Queues
+namespace Mercurial.Net.Extensions.Queues
 {
     /// <summary>
     /// This class contains logic for the Mercurial Queues extension.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace Mercurial.Versions
+namespace Mercurial.Net.Versions
 {
     /// <summary>
     /// This <see cref="MercurialVersionBase"/> implements version-specific methods for

@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This <see cref="MercurialHookBase"/> descendant implements the

@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This is the base class for <see cref="MercurialCommandHookDictionary"/>
@@ -27,7 +27,7 @@ namespace Mercurial.Hooks
         /// The position in <paramref name="optionsCombined"/> to parse a value.
         /// </param>
         /// <returns>
-        /// The parsed value, which can be <c>null</c>, a <see cref="String"/>, or an array of strings.
+        /// The parsed value, which can be <c>null</c>, a <see cref="string"/>, or an array of strings.
         /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1045:DoNotPassTypesByReference", MessageId = "1#", Justification = "Will avoid overly strange return types, keeping the ref")]
         protected object ParseValue(string optionsCombined, ref int index)

@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Runtime.Remoting;
 using System.Text;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements <see cref="IClient"/> by spinning up an instance when
@@ -35,10 +33,10 @@ namespace Mercurial
         /// <param name="repositoryPath">
         /// The path to the repository this <see cref="PersistentClient"/> will handle.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// The <see cref="PersistentClient"/> is not supported for the specified repository path,
         /// or the current Mercurial client.
         /// </exception>
@@ -81,7 +79,7 @@ namespace Mercurial
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         /// <exception cref="MercurialException">
@@ -108,7 +106,7 @@ namespace Mercurial
 
             var commandParts = arguments.ToArray();
 
-            string commandEncoded = string.Join("\0", commandParts.Select(p => p.Trim('"')).ToArray());
+            string commandEncoded = string.Join("\0", commandParts.Select(p => p.Trim(new[] {'"'})).ToArray());
             int length = commandEncoded.Length;
             var commandBuffer = new StringBuilder();
             commandBuffer.Append("runcommand\n");
@@ -272,12 +270,12 @@ namespace Mercurial
             }
             catch (Exception ex)
             {
-                throw new ServerException("Error reading from command server", ex);
+                throw new Exception("Error reading from command server", ex);
             }
 
             if (MercurialHeaderLength != bytesRead)
             {
-                throw new ServerException(string.Format("Received malformed header from command server: {0} bytes", bytesRead));
+                throw new Exception($"Received malformed header from command server: {bytesRead} bytes");
             }
 
             CommandChannel channel = CommandChannelFromFirstByte(header);
@@ -309,12 +307,12 @@ namespace Mercurial
             }
             catch (Exception ex)
             {
-                throw new ServerException("Error reading from command server", ex);
+                throw new Exception("Error reading from command server", ex);
             }
 
             if (bytesRead != messageLength)
             {
-                throw new ServerException(string.Format("Error reading from command server: Expected {0} bytes, read {1}", messageLength, bytesRead));
+                throw new Exception(string.Format("Error reading from command server: Expected {0} bytes, read {1}", messageLength, bytesRead));
             }
 
             CommandMessage message = new CommandMessage(CommandChannelFromFirstByte(header), messageBuffer);
@@ -383,7 +381,7 @@ namespace Mercurial
         /// given repository and for the current Mercurial client;
         /// otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         public static bool IsSupported(string repositoryPath)

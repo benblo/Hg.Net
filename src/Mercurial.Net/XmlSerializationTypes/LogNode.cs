@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace Mercurial.XmlSerializationTypes
+namespace Mercurial.Net.XmlSerializationTypes
 {
     /// <summary>
     /// This class encapsulates a &lt;log...&gt; node in the log output.

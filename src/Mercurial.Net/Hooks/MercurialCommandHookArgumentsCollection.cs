@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This class is used by <see cref="MercurialPreCommandHook"/> and <see cref="MercurialPostCommandHook"/> to
@@ -30,7 +30,7 @@ namespace Mercurial.Hooks
         /// <param name="argumentsCombined">
         /// The string containing the arguments to parse.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="argumentsCombined"/> is <c>null</c>.</para>
         /// </exception>
         public MercurialCommandHookArgumentsCollection(string argumentsCombined)
@@ -108,7 +108,7 @@ namespace Mercurial.Hooks
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>
-        /// A <see cref="IEnumerator{T}"/> that can be used to iterate through the collection.
+        /// A <see cref="System.Collections.Generic.IEnumerator{T}"/> that can be used to iterate through the collection.
         /// </returns>
         public IEnumerator<string> GetEnumerator()
         {

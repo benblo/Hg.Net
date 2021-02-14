@@ -3,9 +3,9 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This is the base class for option classes for various commands for
@@ -29,7 +29,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The name of the command that will be passed to the TortoiseHg command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors", Justification = "This property is safe to set from this point.")]
@@ -45,7 +45,7 @@ namespace Mercurial.Gui
         /// Gets or sets the timeout to use when executing Mercurial commands, in seconds.
         /// Default value for all Gui commands is <c>0</c>, which translates to infinite timeout.
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para><see cref="CommandBase{T}.Timeout"/> cannot be less than 0.</para>
         /// </exception>
         [DefaultValue(0)]
@@ -87,10 +87,10 @@ namespace Mercurial.Gui
         }
 
         /// <summary>
-        /// This method will throw an <see cref="InvalidOperationException"/> if the command is not available
+        /// This method will throw an <see cref="System.InvalidOperationException"/> if the command is not available
         /// in the installed client.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The command is not available in the installed client.
         /// </exception>
         protected static void EnsureCommandAvailability()
@@ -100,7 +100,7 @@ namespace Mercurial.Gui
         }
 
         /// <summary>
-        /// This method will throw a <see cref="InvalidOperationException"/> if the "wrong" client type is installed, to
+        /// This method will throw a <see cref="System.InvalidOperationException"/> if the "wrong" client type is installed, to
         /// signal that a given property on a command object can only be used from a specific client type.
         /// </summary>
         /// <param name="propertyName">
@@ -109,7 +109,7 @@ namespace Mercurial.Gui
         /// <param name="requiredClientType">
         /// The required client type.
         /// </param>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The property is not available in the installed client.
         /// </exception>
         protected static void EnsurePropertyAvailability(string propertyName, GuiClientType requiredClientType)

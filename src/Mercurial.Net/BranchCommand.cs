@@ -1,8 +1,7 @@
-using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg branch" command (<see href="http://www.selenic.com/mercurial/hg.1.html#branch"/>):

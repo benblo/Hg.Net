@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This interface is used by Mercurial.Net to manage replacable client
@@ -15,7 +15,7 @@ namespace Mercurial
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         /// <exception cref="MercurialException">

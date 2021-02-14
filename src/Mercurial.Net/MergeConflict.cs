@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class contains information about a single file that had a merge conflict during the last merge.
@@ -27,7 +27,7 @@ namespace Mercurial
         /// <param name="state">
         /// The current state of the file.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
         /// </exception>
         public MergeConflict(string path, MergeConflictState state)
@@ -80,15 +80,15 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="Object"/> is equal to the current <see cref="Object"/>.
+        /// Determines whether the specified <see cref="object"/> is equal to the current <see cref="object"/>.
         /// </summary>
         /// <returns>
-        /// true if the specified <see cref="Object"/> is equal to the current <see cref="Object"/>; otherwise, false.
+        /// true if the specified <see cref="object"/> is equal to the current <see cref="object"/>; otherwise, false.
         /// </returns>
         /// <param name="obj">
-        /// The <see cref="Object"/> to compare with the current <see cref="Object"/>. 
+        /// The <see cref="object"/> to compare with the current <see cref="object"/>. 
         /// </param>
-        /// <exception cref="NullReferenceException">
+        /// <exception cref="System.NullReferenceException">
         /// The <paramref name="obj"/> parameter is null.
         /// </exception>
         public override bool Equals(object obj)
@@ -106,7 +106,7 @@ namespace Mercurial
         /// Serves as a hash function for a particular type. 
         /// </summary>
         /// <returns>
-        /// A hash code for the current <see cref="Object"/>.
+        /// A hash code for the current <see cref="object"/>.
         /// </returns>
         public override int GetHashCode()
         {
@@ -117,10 +117,10 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// Returns a <see cref="string"/> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
+        /// A <see cref="string"/> that represents this instance.
         /// </returns>
         public override string ToString()
         {

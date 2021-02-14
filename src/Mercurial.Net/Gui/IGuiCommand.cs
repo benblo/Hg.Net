@@ -1,4 +1,4 @@
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This interface must be implemented by all classes that implement the command

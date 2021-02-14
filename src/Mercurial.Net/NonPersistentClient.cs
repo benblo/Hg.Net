@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Mercurial.Versions;
+using Mercurial.Net.Versions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements <see cref="IClient"/> by spinning up an instance of the
@@ -23,7 +23,7 @@ namespace Mercurial
         /// The path to the repository (or not-yet-repository) that this <see cref="NonPersistentClient"/>
         /// will manage.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         public NonPersistentClient(string repositoryPath)
@@ -54,7 +54,7 @@ namespace Mercurial
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public static void Execute(IMercurialCommand command)
@@ -76,7 +76,7 @@ namespace Mercurial
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
@@ -94,15 +94,15 @@ namespace Mercurial
             ClientExecutable.LazyInitialize();
             var specialArguments = (IEnumerable<string>)new[]
             {
-                "--noninteractive", "--encoding", ClientExecutable.GetTerminalEncoding().WebName,
+                "--noninteractive",
             };
-            var environmentVariables = new KeyValuePair<string, string>[]
+            var environmentVariables = new[]
             {
                 new KeyValuePair<string, string>("LANGUAGE", "EN"),
-                new KeyValuePair<string, string>("HGENCODING", ClientExecutable.GetTerminalEncoding().WebName),
             };
 
-            CommandProcessor.Execute(repositoryPath, ClientExecutable.ClientPath, command, environmentVariables, specialArguments);
+            CommandProcessor
+                .Execute(repositoryPath, ClientExecutable.ClientPath, command, environmentVariables, specialArguments);
             MercurialVersionBase.Current.WaitForLocksToDissipate(repositoryPath);
         }
 
@@ -113,7 +113,7 @@ namespace Mercurial
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         /// <exception cref="MercurialException">

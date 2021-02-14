@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Mercurial.Attributes;
-using Mercurial.Versions;
+using Mercurial.Net.Attributes;
+using Mercurial.Net.Versions;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg merge" command (<see href="http://www.selenic.com/mercurial/hg.1.html#merge"/>):

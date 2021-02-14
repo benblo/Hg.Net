@@ -1,4 +1,4 @@
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "synchronize" command (<see href="http://tortoisehg.bitbucket.org/manual/2.0/sync.html#from-command-line"/>):

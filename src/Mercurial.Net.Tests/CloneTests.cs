@@ -1,8 +1,9 @@
 using System;
 using System.Linq;
+using Mercurial.Net;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     public class CloneTests : SingleRepositoryTestsBase
@@ -23,7 +24,7 @@ namespace Mercurial.Tests
         public void Clone_ProducesCloneWithSameLog()
         {
             Repo.Init();
-            WriteTextFileAndCommit(Repo, "test1ûûû.txt", "dummy content", "dummyûûû", true);
+            WriteTextFileAndCommit(Repo, "test1Ã»Ã»Ã».txt", "dummy content", "dummyÃ»Ã»Ã»", true);
 
             Repository cloneRepo = GetRepository();
 

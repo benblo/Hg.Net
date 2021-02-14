@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using Mercurial.XmlSerializationTypes;
+using Mercurial.Net.XmlSerializationTypes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements a basic XML-based changeset parser, that parses changeset information
@@ -25,7 +25,7 @@ namespace Mercurial
         /// <returns>
         /// A collection of <see cref="Changeset"/> objects.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>An unknown path action character was detected in the log output.</para>
         /// <para>- or -</para>
         /// <para>The XML content was not legal according to the expected format.</para>
@@ -154,7 +154,7 @@ namespace Mercurial
         /// An array of <see cref="Changeset"/> objects, or an empty array if no
         /// changeset is present (empty string most likely.)
         /// </returns>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// An unknown path action character was detected in the log output.
         /// </exception>
         public static Changeset[] Parse(string xml)

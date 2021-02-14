@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This class is used by <see cref="MercurialPreCommandHook"/> and <see cref="MercurialPostCommandHook"/> to
@@ -21,10 +21,10 @@ namespace Mercurial.Hooks
         /// <param name="listValue">
         /// The current value of the list, as a string.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para>The <paramref name="listValue"/> is <c>null</c> or an empty string.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para>The <paramref name="listValue"/> is <c>null</c> or an empty string.</para>
         /// <para>- or -</para>
         /// <para>The <paramref name="listValue"/> must start with an opening curly brace.</para>
@@ -32,7 +32,7 @@ namespace Mercurial.Hooks
         /// <para>The <paramref name="listValue"/> must end with a closing curly brace.</para>
         /// <para>- or -</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>Unsupported syntax in the <paramref name="listValue"/>.</para>
         /// </exception>
         public MercurialCommandHookPatternCollection(string listValue)
@@ -71,10 +71,10 @@ namespace Mercurial.Hooks
         /// <param name="item">
         /// The object to insert into the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <paramref name="index"/> is not a valid index in the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </exception>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// The <see cref="MercurialCommandHookPatternCollection"/> is read-only.
         /// </exception>
         public void Insert(int index, object item)
@@ -88,10 +88,10 @@ namespace Mercurial.Hooks
         /// <param name="index">
         /// The zero-based index of the item to remove.
         /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <paramref name="index"/> is not a valid index in the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </exception>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// The <see cref="MercurialCommandHookPatternCollection"/> is read-only.
         /// </exception>
         public void RemoveAt(int index)
@@ -108,10 +108,10 @@ namespace Mercurial.Hooks
         /// <param name="index">
         /// The zero-based index of the element to get or set.
         /// </param>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <paramref name="index"/> is not a valid index in the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </exception>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// The property is set and the <see cref="MercurialCommandHookPatternCollection"/> is read-only.
         /// </exception>
         public object this[int index]
@@ -133,7 +133,7 @@ namespace Mercurial.Hooks
         /// <param name="item">
         /// The object to add to the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </param>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// The <see cref="MercurialCommandHookPatternCollection"/> is read-only.
         /// </exception>
         public void Add(object item)
@@ -144,7 +144,7 @@ namespace Mercurial.Hooks
         /// <summary>
         /// Removes all items from the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </summary>
-        /// <exception cref="NotSupportedException">
+        /// <exception cref="System.NotSupportedException">
         /// The <see cref="MercurialCommandHookPatternCollection"/> is read-only. 
         /// </exception>
         public void Clear()
@@ -167,18 +167,18 @@ namespace Mercurial.Hooks
         }
 
         /// <summary>
-        /// Copies the elements of the <see cref="MercurialCommandHookPatternCollection"/> to an <see cref="Array"/>, starting at a particular <see cref="Array"/> index.
+        /// Copies the elements of the <see cref="MercurialCommandHookPatternCollection"/> to an <see cref="System.Array"/>, starting at a particular <see cref="System.Array"/> index.
         /// </summary>
         /// <param name="array">
-        /// The one-dimensional <see cref="Array"/> that is the destination of the elements copied from <see cref="MercurialCommandHookPatternCollection"/>. The <see cref="Array"/> must have zero-based indexing.
+        /// The one-dimensional <see cref="System.Array"/> that is the destination of the elements copied from <see cref="MercurialCommandHookPatternCollection"/>. The <see cref="System.Array"/> must have zero-based indexing.
         /// </param>
         /// <param name="arrayIndex">The zero-based index in <paramref name="array"/> at which copying begins.
         /// </param>
-        /// <exception cref="ArgumentNullException"><paramref name="array"/> is null.
+        /// <exception cref="System.ArgumentNullException"><paramref name="array"/> is null.
         /// </exception>
-        /// <exception cref="ArgumentOutOfRangeException"><paramref name="arrayIndex"/> is less than 0.
+        /// <exception cref="System.ArgumentOutOfRangeException"><paramref name="arrayIndex"/> is less than 0.
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="array"/> is multidimensional.</para>
         /// <para>- or -</para>
         /// <para><paramref name="arrayIndex"/> is equal to or greater than the length of <paramref name="array"/>.</para>
@@ -228,7 +228,7 @@ namespace Mercurial.Hooks
         /// <param name="item">
         /// The object to remove from the <see cref="MercurialCommandHookPatternCollection"/>.
         /// </param>
-        /// <exception cref="NotSupportedException">The <see cref="MercurialCommandHookPatternCollection"/> is read-only.
+        /// <exception cref="System.NotSupportedException">The <see cref="MercurialCommandHookPatternCollection"/> is read-only.
         /// </exception>
         public bool Remove(object item)
         {
@@ -239,7 +239,7 @@ namespace Mercurial.Hooks
         /// Returns an enumerator that iterates through the collection.
         /// </summary>
         /// <returns>
-        /// A <see cref="IEnumerator{T}"/> that can be used to iterate through the collection.
+        /// A <see cref="System.Collections.Generic.IEnumerator{T}"/> that can be used to iterate through the collection.
         /// </returns>
         public IEnumerator<object> GetEnumerator()
         {
@@ -250,7 +250,7 @@ namespace Mercurial.Hooks
         /// Returns an enumerator that iterates through a collection.
         /// </summary>
         /// <returns>
-        /// An <see cref="IEnumerator"/> object that can be used to iterate through the collection.
+        /// An <see cref="System.Collections.IEnumerator"/> object that can be used to iterate through the collection.
         /// </returns>
         IEnumerator IEnumerable.GetEnumerator()
         {

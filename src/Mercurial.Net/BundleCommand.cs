@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg bundle" command (<see href="http://www.selenic.com/mercurial/hg.1.html#bundle"/>):
@@ -305,7 +305,7 @@ namespace Mercurial
         /// Note that as long as you descend from <see cref="MercurialCommandBase{T}"/> you're not required to call
         /// the base method at all.
         /// </remarks>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>The 'bundle' command requires FileName to be specified.</para>
         /// <para>- or -</para>
         /// <para>The <see cref="VerifyServerCertificate"/> command was used with Mercurial 1.7.4 or older.</para>

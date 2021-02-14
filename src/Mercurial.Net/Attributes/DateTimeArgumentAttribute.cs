@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
-namespace Mercurial.Attributes
+namespace Mercurial.Net.Attributes
 {
     /// <summary>
     /// This attribute can be applied to nullable properties in option classes,
@@ -36,7 +36,7 @@ namespace Mercurial.Attributes
         }
 
         /// <summary>
-        /// Gets or sets the format to use for the <see cref="DateTime"/> property value.
+        /// Gets or sets the format to use for the <see cref="System.DateTime"/> property value.
         /// If <c>null</c> or empty string, use the default format. Default is <c>null</c>.
         /// </summary>
         public string Format
@@ -57,8 +57,8 @@ namespace Mercurial.Attributes
         /// A collection of options or arguments, or an empty array or <c>null</c>
         /// for no options for the specified property value.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
-        /// <see cref="DateTimeArgumentAttribute"/> applied to non-<see cref="DateTime"/> property.
+        /// <exception cref="System.InvalidOperationException">
+        /// <see cref="DateTimeArgumentAttribute"/> applied to non-<see cref="System.DateTime"/> property.
         /// </exception>
         [SuppressMessage("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily", Justification = "DateTime? is a value-type, can't do as the rule suggests")]
         public override string[] GetOptions(object propertyValue, bool addExtraQuotes)

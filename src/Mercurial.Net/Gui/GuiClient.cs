@@ -5,9 +5,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Mercurial.Gui.Clients;
+using Mercurial.Net.Gui.Clients;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This class encapsulates the Mercurial TortoiseHg client application.
@@ -53,13 +53,13 @@ namespace Mercurial.Gui
         /// Which client type to attempt to locate; or <c>null</c> to locate any.
         /// </param>
         /// <returns>
-        /// A <see cref="KeyValuePair{TKey,TValue}"/> containing the type of client
+        /// A <see cref="System.Collections.Generic.KeyValuePair{TKey,TValue}"/> containing the type of client
         /// located and the full path to the client executable, or an empty value if no client could be located.
         /// </returns>
         private static KeyValuePair<GuiClientType, string> LocateClient(GuiClientType? type)
         {
             IEnumerable<string> paths =
-                from path in Environment.GetEnvironmentVariable("PATH").Split(';')
+                from path in Environment.GetEnvironmentVariable("PATH").Split(new[] {';'})
                 where !StringEx.IsNullOrWhiteSpace(path)
                 select path.Trim();
 
@@ -97,7 +97,7 @@ namespace Mercurial.Gui
         /// <returns>
         /// <c>true</c> if the client executable was located; otherwise, <c>false</c>.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="clientType"/> can not be <see cref="GuiClientType.None"/> or an undefined value.</para>
         /// </exception>
         public static bool GetClientAvailability(GuiClientType clientType)
@@ -140,7 +140,7 @@ namespace Mercurial.Gui
         /// <returns>
         /// The <see cref="System.Version"/> of the TortoiseHg client installed and in use.
         /// </returns>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>Unable to find or interpret version number from the TortoiseHg client.</para>
         /// </exception>
         [SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate", Justification = "Since reading the version means executing an external program, a property is not the way to go.")]
@@ -163,7 +163,7 @@ namespace Mercurial.Gui
                     string.Format(CultureInfo.InvariantCulture, "Unable to locate Mercurial version number in '{0}'", firstLine));
 
             string versionString = ma.Groups["version"].Value;
-            switch (versionString.Split('.').Length)
+            switch (versionString.Split(new[] {'.'}).Length)
             {
                 case 1:
                     return new Version(string.Format(CultureInfo.InvariantCulture, "{0}.0.0.0", versionString));
@@ -186,9 +186,9 @@ namespace Mercurial.Gui
         /// <summary>
         /// Gets or sets which <see cref="GuiClientType">type of client</see> to use. Note that
         /// setting this property will attempt to locate that client, and if that can't be done,
-        /// the property won't change and an <see cref="InvalidOperationException"/> will be thrown.
+        /// the property won't change and an <see cref="System.InvalidOperationException"/> will be thrown.
         /// </summary>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para>The chosen client is not available, cannot change the property.</para>
         /// </exception>
         public static GuiClientType ClientType
@@ -221,7 +221,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the log method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void LogGui(this Repository repository, LogGuiCommand command = null)
@@ -233,73 +233,73 @@ namespace Mercurial.Gui
             repository.Execute(command);
         }
 
-        /// <summary>
-        /// Executes the given <see cref="IGuiCommand"/> command against
-        /// the Mercurial repository, asynchronously.
-        /// </summary>
-        /// <param name="repository">
-        /// The <see cref="Repository"/> to execute the command in.
-        /// </param>
-        /// <param name="command">
-        /// The <see cref="IGuiCommand"/> command to execute.
-        /// </param>
-        /// <param name="callback">
-        /// A callback to call when the execution has completed. The <see cref="IAsyncResult.AsyncState"/> value of the
-        /// <see cref="IAsyncResult"/> object passed to the <paramref name="callback"/> will be the
-        /// <paramref name="command"/> object.
-        /// </param>
-        /// <returns>
-        /// A <see cref="IAsyncResult"/> object to hold on to until the asynchronous execution has
-        /// completed, and then pass to <see cref="EndExecute"/>.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">
-        /// <para><paramref name="repository"/> is <c>null</c>.</para>
-        /// <para>- or -</para>
-        /// <para><paramref name="command"/> is <c>null</c>.</para>
-        /// </exception>
-        public static IAsyncResult BeginExecute(this Repository repository, IGuiCommand command, AsyncCallback callback)
-        {
-            if (repository == null)
-                throw new ArgumentNullException("repository");
-            if (command == null)
-                throw new ArgumentNullException("command");
+        // /// <summary>
+        // /// Executes the given <see cref="IGuiCommand"/> command against
+        // /// the Mercurial repository, asynchronously.
+        // /// </summary>
+        // /// <param name="repository">
+        // /// The <see cref="Repository"/> to execute the command in.
+        // /// </param>
+        // /// <param name="command">
+        // /// The <see cref="IGuiCommand"/> command to execute.
+        // /// </param>
+        // /// <param name="callback">
+        // /// A callback to call when the execution has completed. The <see cref="System.IAsyncResult.AsyncState"/> value of the
+        // /// <see cref="System.IAsyncResult"/> object passed to the <paramref name="callback"/> will be the
+        // /// <paramref name="command"/> object.
+        // /// </param>
+        // /// <returns>
+        // /// A <see cref="System.IAsyncResult"/> object to hold on to until the asynchronous execution has
+        // /// completed, and then pass to <see cref="EndExecute"/>.
+        // /// </returns>
+        // /// <exception cref="System.ArgumentNullException">
+        // /// <para><paramref name="repository"/> is <c>null</c>.</para>
+        // /// <para>- or -</para>
+        // /// <para><paramref name="command"/> is <c>null</c>.</para>
+        // /// </exception>
+        // public static IAsyncResult BeginExecute(this Repository repository, IGuiCommand command, AsyncCallback callback)
+        // {
+        //     if (repository == null)
+        //         throw new ArgumentNullException("repository");
+        //     if (command == null)
+        //         throw new ArgumentNullException("command");
+        //
+        //     var environmentVariables = new[]
+        //     {
+        //         new KeyValuePair<string, string>("LANGUAGE", "EN"),
+        //         new KeyValuePair<string, string>("HGENCODING", "cp1252"),
+        //     };
+        //
+        //     return CommandProcessor.BeginExecute(
+        //         repository.Path, ClientPath, command, environmentVariables, new string[0], callback);
+        // }
 
-            var environmentVariables = new[]
-            {
-                new KeyValuePair<string, string>("LANGUAGE", "EN"),
-                new KeyValuePair<string, string>("HGENCODING", "cp1252"),
-            };
-
-            return CommandProcessor.BeginExecute(
-                repository.Path, ClientPath, command, environmentVariables, new string[0], callback);
-        }
-
-        /// <summary>
-        /// Finalizes the asynchronous execution started with <see cref="BeginExecute"/>.
-        /// </summary>
-        /// <param name="repository">
-        /// The <see cref="Repository"/> to finalize the command executionfor.
-        /// </param>
-        /// <param name="result">
-        /// The <see cref="IAsyncResult"/> object returned from <see cref="BeginExecute"/>.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// <para><paramref name="repository"/> is <c>null</c>.</para>
-        /// <para>- or -</para>
-        /// <para><paramref name="result"/> is <c>null</c>.</para>
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        /// <para><paramref name="result"/> is not a <see cref="IAsyncResult"/> that was returned from <see cref="BeginExecute"/>.</para>
-        /// </exception>
-        public static void EndExecute(this Repository repository, IAsyncResult result)
-        {
-            if (repository == null)
-                throw new ArgumentNullException("repository");
-            if (result == null)
-                throw new ArgumentNullException("result");
-
-            CommandProcessor.EndExecute(result);
-        }
+        // /// <summary>
+        // /// Finalizes the asynchronous execution started with <see cref="BeginExecute"/>.
+        // /// </summary>
+        // /// <param name="repository">
+        // /// The <see cref="Repository"/> to finalize the command executionfor.
+        // /// </param>
+        // /// <param name="result">
+        // /// The <see cref="System.IAsyncResult"/> object returned from <see cref="BeginExecute"/>.
+        // /// </param>
+        // /// <exception cref="System.ArgumentNullException">
+        // /// <para><paramref name="repository"/> is <c>null</c>.</para>
+        // /// <para>- or -</para>
+        // /// <para><paramref name="result"/> is <c>null</c>.</para>
+        // /// </exception>
+        // /// <exception cref="System.ArgumentException">
+        // /// <para><paramref name="result"/> is not a <see cref="System.IAsyncResult"/> that was returned from <see cref="BeginExecute"/>.</para>
+        // /// </exception>
+        // public static void EndExecute(this Repository repository, IAsyncResult result)
+        // {
+        //     if (repository == null)
+        //         throw new ArgumentNullException("repository");
+        //     if (result == null)
+        //         throw new ArgumentNullException("result");
+        //
+        //     CommandProcessor.EndExecute(result);
+        // }
 
         /// <summary>
         /// Executes the given <see cref="IGuiCommand"/> command against
@@ -311,7 +311,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The <see cref="IGuiCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
@@ -340,7 +340,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the add method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void AddGui(this Repository repository, AddGuiCommand command = null)
@@ -376,7 +376,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the clone method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void CloneGui(this Repository repository, CloneGuiCommand command = null)
@@ -398,7 +398,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the archive method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void ArchiveGui(this Repository repository, ArchiveGuiCommand command = null)
@@ -419,7 +419,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the commit method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void CommitGui(this Repository repository, CommitGuiCommand command = null)
@@ -440,7 +440,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the datamine method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -464,7 +464,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the guess method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void GuessGui(this Repository repository, GuessGuiCommand command = null)
@@ -485,7 +485,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the hgignore method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void EditIgnoreFiltersGui(this Repository repository, EditIgnoreFiltersGuiCommand command = null)
@@ -506,7 +506,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the import method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void ImportGui(this Repository repository, ImportGuiCommand command = null)
@@ -527,7 +527,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the init method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void InitGui(this Repository repository, InitGuiCommand command = null)
@@ -548,7 +548,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the forget method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void ForgetGui(this Repository repository, ForgetGuiCommand command = null)
@@ -569,7 +569,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the merge method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void MergeGui(this Repository repository, MergeGuiCommand command = null)
@@ -590,7 +590,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the recovery method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -614,7 +614,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the remove method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void RemoveGui(this Repository repository, RemoveGuiCommand command = null)
@@ -635,7 +635,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the annotate method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para> - or -</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
@@ -662,12 +662,12 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the annotate method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="AnnotateGuiCommand.File"/> cannot be set before calling this method.</para>
         /// </exception>
         /// <remarks>
@@ -703,12 +703,12 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the drag_copy method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="DragCopyMoveGuiCommandBase{T}.Destination"/> cannot be set before calling this method.</para>
         /// </exception>
         /// <remarks>
@@ -741,7 +741,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The options to the drag_copy method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
@@ -774,12 +774,12 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the drag_move method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="DragCopyMoveGuiCommandBase{T}.Destination"/> cannot be set before calling this method.</para>
         /// </exception>
         /// <remarks>
@@ -812,7 +812,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The options to the drag_move method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
@@ -839,7 +839,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the email method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -864,7 +864,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the search method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -889,7 +889,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the manifest method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -917,12 +917,12 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the mpatch method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="MPatchGuiCommand.File"/> cannot be set before calling this method.</para>
         /// </exception>
         public static void MPatchGui(this Repository repository, string file, MPatchGuiCommand command = null)
@@ -949,7 +949,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The options to the mpatch method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -974,7 +974,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the mq method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -999,7 +999,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the purge method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1024,7 +1024,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the qqueue method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1049,7 +1049,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the qreorder method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1080,14 +1080,14 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the rebase method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="sourceRevision"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destinationRevision"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="RebaseGuiCommand.SourceRevision"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="RebaseGuiCommand.DestinationRevision"/> cannot be set before calling this method.</para>
@@ -1124,7 +1124,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The options to the rebase method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
@@ -1154,12 +1154,12 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the rejects method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="RejectsGuiCommand.File"/> cannot be set before calling this method.</para>
         /// </exception>
         /// <remarks>
@@ -1189,7 +1189,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the rejects method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/> is <c>null</c>.</para>
@@ -1213,7 +1213,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the backout method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1238,7 +1238,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the bisect method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1263,7 +1263,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the resolve method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1294,14 +1294,14 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the copy method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="MoveCopyRenameGuiCommandBase{T}.Source"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="MoveCopyRenameGuiCommandBase{T}.Destination"/> cannot be set before calling this method.</para>
@@ -1338,7 +1338,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the copy method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1369,14 +1369,14 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the mv method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="MoveCopyRenameGuiCommandBase{T}.Source"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="MoveCopyRenameGuiCommandBase{T}.Destination"/> cannot be set before calling this method.</para>
@@ -1406,7 +1406,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the mv method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void MoveGui(this Repository repository, MoveGuiCommand command = null)
@@ -1434,14 +1434,14 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the rename method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="MoveCopyRenameGuiCommandBase{T}.Source"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="MoveCopyRenameGuiCommandBase{T}.Destination"/> cannot be set before calling this method.</para>
@@ -1471,7 +1471,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the rename method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void RenameGui(this Repository repository, RenameGuiCommand command = null)
@@ -1493,7 +1493,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the revert method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void RevertGui(this Repository repository, RevertGuiCommand command = null)
@@ -1547,7 +1547,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the repoconfig method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void RepoConfigGui(this Repository repository, RepoConfigGuiCommand command = null)
@@ -1569,7 +1569,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the shelve method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void ShelveGui(this Repository repository, ShelveGuiCommand command = null)
@@ -1591,7 +1591,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the status method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void StatusGui(this Repository repository, StatusGuiCommand command = null)
@@ -1616,7 +1616,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the strip method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
@@ -1643,7 +1643,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the strip method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void StripGui(this Repository repository, StripGuiCommand command = null)
@@ -1665,7 +1665,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the synch method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void SynchronizeGui(this Repository repository, SynchronizeGuiCommand command = null)
@@ -1693,14 +1693,14 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the tag method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="TagGuiCommand.Revision"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="TagGuiCommand.Name"/> cannot be set before calling this method.</para>
@@ -1737,7 +1737,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the tag method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         /// <remarks>
@@ -1765,10 +1765,10 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the tag method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="UpdateGuiCommand.Revision"/> cannot be set before calling this method.</para>
         /// </exception>
         public static void UpdateGui(this Repository repository, RevSpec revision, UpdateGuiCommand command = null)
@@ -1795,7 +1795,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the tag method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void UpdateGui(this Repository repository, UpdateGuiCommand command = null)
@@ -1821,10 +1821,10 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the vdiff method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="DiffGuiCommand.Revisions"/> cannot be set before calling this method.</para>
         /// </exception>
         public static void DiffGui(this Repository repository, RevSpec revisions, DiffGuiCommand command = null)
@@ -1851,7 +1851,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// Any extra options to the vdiff method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repository"/> is <c>null</c>.</para>
         /// </exception>
         public static void DiffGui(this Repository repository, DiffGuiCommand command = null)

@@ -1,8 +1,9 @@
 using System.Linq;
 using System.Net;
+using Mercurial.Net;
 using NUnit.Framework;
 
-namespace Mercurial.Tests
+namespace Mercurial.Net.Tests
 {
     [TestFixture]
     public class IdentifyTests : SingleRepositoryTestsBase

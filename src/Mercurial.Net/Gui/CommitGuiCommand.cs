@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "commit" command (<see href="http://tortoisehg.bitbucket.org/manual/2.0/commit.html#from-command-line"/>):
@@ -45,7 +45,7 @@ namespace Mercurial.Gui
         }
 
         /// <summary>
-        /// Gets or sets the timestamp <see cref="DateTime"/> to use when committing;
+        /// Gets or sets the timestamp <see cref="System.DateTime"/> to use when committing;
         /// or <c>null</c> which means use the current date and time. Default is <c>null</c>.
         /// </summary>
         [DateTimeArgument(NonNullOption = "--date")]

@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This interface is used by <see cref="Repository"/> to determine if the current
@@ -24,7 +24,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> to use to execute the command, and from now on.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="currentClient"/> is <c>null</c>.</para>
@@ -46,7 +46,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> to use from now on.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="currentClient"/> is <c>null</c>.</para>

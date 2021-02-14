@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements execution of a custom Mercurial command.
@@ -13,7 +13,7 @@ namespace Mercurial
         /// <param name="command">
         /// The command to execute through Mercurial.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         public CustomCommand(string command)

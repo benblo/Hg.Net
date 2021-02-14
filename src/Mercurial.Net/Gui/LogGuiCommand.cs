@@ -1,7 +1,7 @@
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// Implements the TortoiseHg "log" command (<see href="http://tortoisehg.bitbucket.org/manual/2.0/workbench.html#from-command-line"/>):

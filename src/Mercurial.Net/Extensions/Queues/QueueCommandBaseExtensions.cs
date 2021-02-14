@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial.Extensions.Queues
+namespace Mercurial.Net.Extensions.Queues
 {
     /// <summary>
     /// This class adds extension methods to the <see cref="MercurialCommandBase{T}"/> class, for
@@ -20,10 +20,10 @@ namespace Mercurial.Extensions.Queues
         /// <returns>
         /// The <paramref name="command"/>, a continuation of the fluent interface.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// The Mercurial Queues extension is not installed and active.
         /// </exception>
         public static T OperateOnPatchRepository<T>(this T command) where T : CommandBase<T>

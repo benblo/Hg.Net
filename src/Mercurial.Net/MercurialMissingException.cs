@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// Represents the error that Mercurial is not installed, or can't

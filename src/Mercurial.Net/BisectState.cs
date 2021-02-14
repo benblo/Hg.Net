@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This enum is used by the <see cref="BisectCommand"/>.<see cref="BisectCommand.State">State</see>

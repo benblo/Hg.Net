@@ -1,4 +1,4 @@
-namespace Mercurial.Hooks
+namespace Mercurial.Net.Hooks
 {
     /// <summary>
     /// This <see cref="MercurialControllingHookBase"/> descendant implements the

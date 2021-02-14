@@ -1,6 +1,6 @@
 using System;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This interface must be implemented by classes that will produce <see cref="IClient"/>
@@ -18,7 +18,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="IClient"/> implementation to use.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         IClient CreateClient(string repositoryPath);

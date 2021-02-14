@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
-using Mercurial.Hooks;
+using Mercurial.Net.Hooks;
 using NUnit.Framework;
 
-namespace Mercurial.Tests.Hooks
+namespace Mercurial.Net.Tests.Hooks
 {
     [TestFixture]
     [Category("API")]

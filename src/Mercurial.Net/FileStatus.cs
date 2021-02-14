@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// Contains the status of a single modified file in the working folder.
@@ -27,7 +27,7 @@ namespace Mercurial
         /// <param name="path">
         /// The path to the file, relative to the root of the working folder.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
         /// </exception>
         public FileStatus(FileState state, string path)
@@ -122,10 +122,10 @@ namespace Mercurial
         }
 
         /// <summary>
-        /// Returns a <see cref="String"/> that represents the current <see cref="Object"/>.
+        /// Returns a <see cref="string"/> that represents the current <see cref="object"/>.
         /// </summary>
         /// <returns>
-        /// A <see cref="String"/> that represents the current <see cref="Object"/>.
+        /// A <see cref="string"/> that represents the current <see cref="object"/>.
         /// </returns>
         public override string ToString()
         {

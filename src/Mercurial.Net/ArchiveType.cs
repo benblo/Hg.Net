@@ -1,4 +1,4 @@
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// The type of archive to produce using the <see cref="ArchiveCommand"/>.

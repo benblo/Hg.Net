@@ -1,8 +1,8 @@
 using System.ComponentModel;
 using System.Text.RegularExpressions;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg identify" command (<see href="http://www.selenic.com/mercurial/hg.1.html#identify"/>):

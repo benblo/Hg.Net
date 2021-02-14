@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Runtime.Remoting.Messaging;
+using System.Text;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates a repository on disk.
@@ -33,13 +33,13 @@ namespace Mercurial
         /// <exception cref="MercurialMissingException">
         /// The Mercurial command line client could not be located.
         /// </exception>
-        /// <exception cref = "ArgumentNullException">
+        /// <exception cref = "System.ArgumentNullException">
         /// <para><paramref name = "rootPath" /> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref = "DirectoryNotFoundException">
+        /// <exception cref = "System.IO.DirectoryNotFoundException">
         /// <para><paramref name = "rootPath" /> refers to a directory that does not exist.</para>
         /// </exception>
-        /// <exception cref = "InvalidOperationException">
+        /// <exception cref = "System.InvalidOperationException">
         /// <para><paramref name = "rootPath" /> refers to a directory that doesn't appear to contain
         /// a Mercurial repository (no .hg directory.)</para>
         /// </exception>
@@ -63,15 +63,15 @@ namespace Mercurial
         /// <exception cref="MercurialMissingException">
         /// The Mercurial command line client could not be located.
         /// </exception>
-        /// <exception cref = "ArgumentNullException">
+        /// <exception cref = "System.ArgumentNullException">
         /// <para><paramref name = "rootPath" /> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name = "clientFactory" /> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref = "DirectoryNotFoundException">
+        /// <exception cref = "System.IO.DirectoryNotFoundException">
         /// <para><paramref name = "rootPath" /> refers to a directory that does not exist.</para>
         /// </exception>
-        /// <exception cref = "InvalidOperationException">
+        /// <exception cref = "System.InvalidOperationException">
         /// <para><paramref name = "rootPath" /> refers to a directory that doesn't appear to contain
         /// a Mercurial repository (no .hg directory.)</para>
         /// </exception>
@@ -85,7 +85,7 @@ namespace Mercurial
                 throw new MercurialMissingException("The Mercurial command line client could not be located");
             if (clientFactory == null)
                 throw new ArgumentNullException("clientFactory");
-
+            
             _ClientFactory = clientFactory;
             _Client = clientFactory.CreateClient(System.IO.Path.GetFullPath(rootPath));
         }
@@ -117,21 +117,21 @@ namespace Mercurial
 
         /// <summary>
         /// Executes the given <see cref="IMercurialCommand"/> command asynchronously against
-        /// the Mercurial repository, returning a <see cref="IAsyncResult"/> object
+        /// the Mercurial repository, returning a <see cref="System.IAsyncResult"/> object
         /// keeping track of the execution.
         /// </summary>
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
         /// <param name="callback">
-        /// A callback to call when the execution has completed. The <see cref="IAsyncResult.AsyncState"/> value of the
-        /// <see cref="IAsyncResult"/> object passed to the <paramref name="callback"/> will be the
+        /// A callback to call when the execution has completed. The <see cref="System.IAsyncResult.AsyncState"/> value of the
+        /// <see cref="System.IAsyncResult"/> object passed to the <paramref name="callback"/> will be the
         /// <paramref name="command"/> object.
         /// </param>
         /// <returns>
-        /// A <see cref="IAsyncResult"/> object keeping track of the asynchronous execution.
+        /// A <see cref="System.IAsyncResult"/> object keeping track of the asynchronous execution.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public IAsyncResult BeginExecute(IMercurialCommand command, AsyncCallback callback)
@@ -155,14 +155,14 @@ namespace Mercurial
         /// The <see cref="IMercurialCommand{T}"/> command to execute.
         /// </param>
         /// <param name="callback">
-        /// A callback to call when the execution has completed. The <see cref="IAsyncResult.AsyncState"/> value of the
-        /// <see cref="IAsyncResult"/> object passed to the <paramref name="callback"/> will be the
+        /// A callback to call when the execution has completed. The <see cref="System.IAsyncResult.AsyncState"/> value of the
+        /// <see cref="System.IAsyncResult"/> object passed to the <paramref name="callback"/> will be the
         /// <paramref name="command"/> object.
         /// </param>
         /// <returns>
-        /// A <see cref="IAsyncResult"/> object keeping track of the asynchronous execution.
+        /// A <see cref="System.IAsyncResult"/> object keeping track of the asynchronous execution.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public IAsyncResult<TResult> BeginExecute<TResult>(IMercurialCommand<TResult> command, AsyncCallback callback)
@@ -179,25 +179,25 @@ namespace Mercurial
         /// Finalizes the asynchronous execution started with <see cref="BeginExecute"/>.
         /// </summary>
         /// <param name="result">
-        /// The <see cref="IAsyncResult"/> object returned from <see cref="BeginExecute"/>.
+        /// The <see cref="System.IAsyncResult"/> object returned from <see cref="BeginExecute"/>.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="result"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
-        /// <para><paramref name="result"/> is not a <see cref="IAsyncResult"/> that was returned from <see cref="BeginExecute"/>.</para>
+        /// <exception cref="System.ArgumentException">
+        /// <para><paramref name="result"/> is not a <see cref="System.IAsyncResult"/> that was returned from <see cref="BeginExecute"/>.</para>
         /// </exception>
         public void EndExecute(IAsyncResult result)
         {
             if (result == null)
                 throw new ArgumentNullException("result");
-            var asyncResult = result as AsyncResult;
-            if (asyncResult == null)
-                throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
-            var executeDelegate = asyncResult.AsyncDelegate as ExecuteDelegate;
-            if (executeDelegate == null)
-                throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
-            executeDelegate.EndInvoke(result);
+            // var asyncResult = result as AsyncResult;
+            // if (asyncResult == null)
+            //     throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
+            // var executeDelegate = asyncResult.AsyncDelegate as ExecuteDelegate;
+            // if (executeDelegate == null)
+            //     throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
+            // executeDelegate.EndInvoke(result);
         }
 
         /// <summary>
@@ -212,30 +212,30 @@ namespace Mercurial
         /// <returns>
         /// The result of executing the command.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="result"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
-        /// <para><paramref name="result"/> is not a <see cref="IAsyncResult"/> that was returned from <see cref="BeginExecute"/>.</para>
+        /// <exception cref="System.ArgumentException">
+        /// <para><paramref name="result"/> is not a <see cref="System.IAsyncResult"/> that was returned from <see cref="BeginExecute"/>.</para>
         /// </exception>
-        public TResult EndExecute<TResult>(IAsyncResult<TResult> result)
-        {
-            if (result == null)
-                throw new ArgumentNullException("result");
-
-            var typedAsyncResult = result as AsyncResult<TResult>;
-            if (typedAsyncResult == null)
-                throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
-            var asyncResult = result.InnerResult as AsyncResult;
-            if (asyncResult == null)
-                throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
-            var executeDelegate = asyncResult.AsyncDelegate as ExecuteDelegate;
-            if (executeDelegate == null)
-                throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
-            executeDelegate.EndInvoke(result);
-
-            return ((IMercurialCommand<TResult>)result.AsyncState).Result;
-        }
+        // public TResult EndExecute<TResult>(IAsyncResult<TResult> result)
+        // {
+        //     if (result == null)
+        //         throw new ArgumentNullException("result");
+        //
+        //     var typedAsyncResult = result as AsyncResult<TResult>;
+        //     if (typedAsyncResult == null)
+        //         throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
+        //     var asyncResult = result.InnerResult as AsyncResult;
+        //     if (asyncResult == null)
+        //         throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
+        //     var executeDelegate = asyncResult.AsyncDelegate as ExecuteDelegate;
+        //     if (executeDelegate == null)
+        //         throw new ArgumentException("invalid IAsyncResult object passed to CommandProcessor.EndExecute", "result");
+        //     executeDelegate.EndInvoke(result);
+        //
+        //     return ((IMercurialCommand<TResult>)result.AsyncState).Result;
+        // }
 
         /// <summary>
         /// Executes the given <see cref="IMercurialCommand{TResult}"/> command against
@@ -250,7 +250,7 @@ namespace Mercurial
         /// <returns>
         /// The result of executing the command.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public TResult Execute<TResult>(IMercurialCommand<TResult> command)
@@ -283,7 +283,7 @@ namespace Mercurial
         /// <param name="command">
         /// The <see cref="IMercurialCommand"/> command to execute.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Execute(IMercurialCommand command)
@@ -336,10 +336,10 @@ namespace Mercurial
         /// <returns>
         /// A collection of <see cref="Changeset" /> instances.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="set"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="LogCommand.Revisions"/> is non-<c>null</c>, this is not valid for this method.</para>
         /// </exception>
         public IEnumerable<Changeset> Log(RevSpec set, LogCommand command = null)
@@ -381,7 +381,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="RevSpec"/> with the hash of the new changeset.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/>.<see cref="CommitCommand.Message">Message</see> is empty.</para>
@@ -409,7 +409,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="RevSpec"/> with the hash of the new changeset.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="message"/> is <c>null</c> or empty.</para>
         /// </exception>
         public RevSpec Commit(string message, CommitCommand command = null)
@@ -443,7 +443,7 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the update method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
         /// </exception>
         public void Update(RevSpec revision, UpdateCommand command = null)
@@ -477,7 +477,7 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the clone method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command" /> is <c>null</c>.</para>
         /// </exception>
         public void Clone(CloneCommand command)
@@ -497,10 +497,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the clone method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="CloneCommand.Source"/> cannot be set before calling this method.</para>
         /// </exception>
         public void Clone(string source, CloneCommand command = null)
@@ -548,10 +548,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the pull method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="PullCommand.Source"/> cannot be set before calling this method.</para>
         /// </exception>
         public void Pull(string source, PullCommand command = null)
@@ -587,10 +587,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the push method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="PushCommand.Destination"/> cannot be set before calling this method.</para>
         /// </exception>
         public void Push(string destination, PushCommand command = null)
@@ -631,10 +631,10 @@ namespace Mercurial
         /// <returns>
         /// A collection of <see cref="Annotation"/> objects, one for each line.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="AnnotateCommand.Path"/> cannot be set before calling this method.</para>
         /// </exception>
         public IEnumerable<Annotation> Annotate(AnnotateCommand command = null)
@@ -660,10 +660,10 @@ namespace Mercurial
         /// <returns>
         /// A collection of <see cref="Annotation"/> objects, one for each line.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="AnnotateCommand.Path"/> cannot be set before calling this method.</para>
         /// </exception>
         public IEnumerable<Annotation> Annotate(string path, AnnotateCommand command = null)
@@ -705,10 +705,10 @@ namespace Mercurial
         /// <returns>
         /// The current or new branch name.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="BranchCommand.Name"/> cannot be set before calling this method.</para>
         /// </exception>
         public string Branch(string name, BranchCommand command = null)
@@ -766,7 +766,7 @@ namespace Mercurial
         /// The information object for the add command, containing the paths of the files
         /// to add.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void Add(string path, AddCommand command = null)
@@ -786,7 +786,7 @@ namespace Mercurial
         /// The information object for the add command, containing the paths of the files
         /// to add.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Add(AddCommand command)
@@ -808,7 +808,7 @@ namespace Mercurial
         /// The information object for the remove command, containing the paths of the files
         /// to remove.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void Remove(string path, RemoveCommand command = null)
@@ -828,7 +828,7 @@ namespace Mercurial
         /// The information object for the remove command, containing the paths of the files
         /// to remove.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Remove(RemoveCommand command)
@@ -851,7 +851,7 @@ namespace Mercurial
         /// The information object for the forget command, containing the paths of the files
         /// to forget.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="path"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void Forget(string path, ForgetCommand command = null)
@@ -872,7 +872,7 @@ namespace Mercurial
         /// The information object for the forget command, containing the paths of the files
         /// to forget.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Forget(ForgetCommand command)
@@ -904,7 +904,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the tag command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Tag(TagCommand command)
@@ -925,10 +925,10 @@ namespace Mercurial
         /// The information object for the tag command, or <c>null</c> if no extra information
         /// is necessary.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// <para><paramref name="command"/>.<see cref="TagCommand.Name">Name</see> and <paramref name="name"/> was both set.</para>
         /// </exception>
         public void Tag(string name, TagCommand command = null)
@@ -971,10 +971,10 @@ namespace Mercurial
         /// <returns>
         /// The result of executing the command as a collection of <see cref="Changeset"/> objects.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="OutgoingCommand.Destination"/> cannot be set before calling this method.</para>
         /// </exception>
         public IEnumerable<Changeset> Outgoing(string destination, OutgoingCommand command = null)
@@ -1018,10 +1018,10 @@ namespace Mercurial
         /// <returns>
         /// The result of executing the command as a collection of <see cref="Changeset"/> objects.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="IncomingCommand.Source"/> cannot be set before calling this method.</para>
         /// </exception>
         public IEnumerable<Changeset> Incoming(string source, IncomingCommand command = null)
@@ -1050,12 +1050,12 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the bundle method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="fileName"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="BundleCommand.FileName"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="BundleCommand.Destination"/> cannot be set before calling this method.</para>
@@ -1089,10 +1089,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the bundle method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="fileName"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="BundleCommand.FileName"/> cannot be set before calling this method.</para>
         /// </exception>
         /// <exception cref="NoChangesFoundMercurialExecutionException">
@@ -1116,7 +1116,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the bundle command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         /// <exception cref="NoChangesFoundMercurialExecutionException">
@@ -1139,7 +1139,7 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the unbundle method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="fileName"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void Unbundle(string fileName, UnbundleCommand command = null)
@@ -1158,7 +1158,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the unbundle method.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Unbundle(UnbundleCommand command)
@@ -1182,12 +1182,12 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the copy method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="source"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><see cref="CopyCommand.Source"/> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><see cref="CopyCommand.Destination"/> cannot be set before calling this method.</para>
@@ -1217,7 +1217,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the copy command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Copy(CopyCommand command)
@@ -1277,10 +1277,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the verify method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="destination"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="ArchiveCommand.Destination"/> cannot be set before calling this method.</para>
         /// </exception>
         public void Archive(string destination, ArchiveCommand command = null)
@@ -1321,7 +1321,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="BisectResult"/> results from executing the command.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="BisectCommand.State">State</see> cannot be set before calling this method.</para>
         /// </exception>
         public BisectResult Bisect(BisectState state, BisectCommand command = null)
@@ -1344,7 +1344,7 @@ namespace Mercurial
         /// <returns>
         /// The <see cref="BisectResult"/> results from executing the command.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public BisectResult Bisect(BisectCommand command)
@@ -1361,7 +1361,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the bookmark command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Bookmark(BookmarkCommand command)
@@ -1381,10 +1381,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the bookmark method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="BookmarkCommand.Name">Name</see> cannot be set before calling this method.</para>
         /// </exception>
         public void Bookmark(string name, BookmarkCommand command = null)
@@ -1410,12 +1410,12 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the bookmark method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// <para>- or -</para>
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="BookmarkCommand.Name">Name</see> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/>.<see cref="BookmarkCommand.Revision">Revision</see> cannot be set before calling this method.</para>
@@ -1446,7 +1446,7 @@ namespace Mercurial
         /// Any extra options to the bookmarks method, or <c>null</c> for default options.
         /// </param>
         /// <returns>
-        /// A collection of <see cref="T:Mercurial.Bookmark"/> objects, one for each bookmark in this <see cref="Repository"/>.
+        /// A collection of <see cref="T:Mercurial.Net.Bookmark"/> objects, one for each bookmark in this <see cref="Repository"/>.
         /// </returns>
         public IEnumerable<Bookmark> Bookmarks(BookmarksCommand command = null)
         {
@@ -1461,7 +1461,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the rename command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Rename(RenameCommand command)
@@ -1484,12 +1484,12 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the move method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="source"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="MoveRenameCommandBase{T}.Source">Source</see> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/>.<see cref="MoveRenameCommandBase{T}.Destination">Destination</see> cannot be set before calling this method.</para>
@@ -1518,7 +1518,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the copy command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Move(MoveCommand command)
@@ -1541,12 +1541,12 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the move method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="source"/> is <c>null</c>.</para>
         /// <para>- or -</para>
         /// <para><paramref name="destination"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="MoveRenameCommandBase{T}.Source">Source</see> cannot be set before calling this method.</para>
         /// <para>- or -</para>
         /// <para><paramref name="command"/>.<see cref="MoveRenameCommandBase{T}.Destination">Destination</see> cannot be set before calling this method.</para>
@@ -1575,7 +1575,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the revert command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public void Revert(RevertCommand command)
@@ -1595,7 +1595,7 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the revert method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="name"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void Revert(string name, RevertCommand command = null)
@@ -1616,7 +1616,7 @@ namespace Mercurial
         /// Any extra options to the tags method, or <c>null</c> for default options.
         /// </param>
         /// <returns>
-        /// A collection of <see cref="T:Mercurial.Tag"/> objects for the existing tags in the repository.
+        /// A collection of <see cref="T:Mercurial.Net.Tag"/> objects for the existing tags in the repository.
         /// </returns>
         public IEnumerable<Tag> Tags(TagsCommand command = null)
         {
@@ -1638,10 +1638,10 @@ namespace Mercurial
         /// A collection of <see cref="string"/>s, each specifying the relative path to and name of a file
         /// in the specified <paramref name="revision"/>.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="ManifestCommand.Revision">Revision</see> cannot be set before calling this method.</para>
         /// </exception>
         public IEnumerable<string> Manifest(RevSpec revision, ManifestCommand command = null)
@@ -1667,7 +1667,7 @@ namespace Mercurial
         /// A collection of <see cref="string"/>s, each specifying the relative path to and name of a file
         /// in the current or specified revision.
         /// </returns>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="ManifestCommand.Revision">Revision</see> cannot be set before calling this method.</para>
         /// </exception>
         public IEnumerable<string> Manifest(ManifestCommand command = null)
@@ -1689,10 +1689,10 @@ namespace Mercurial
         /// <returns>
         /// A <see cref="MergeResult"/> value indicitating the result of the merge.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revision"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="MergeCommand.Revision">Revision</see> cannot be set before calling this method.</para>
         /// </exception>
         public MergeResult Merge(RevSpec revision, MergeCommand command = null)
@@ -1749,7 +1749,7 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the resolve method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
         public void Resolve(string file, ResolveCommand command = null)
@@ -1775,10 +1775,10 @@ namespace Mercurial
         /// <param name="command">
         /// Any extra options to the resolve method, or <c>null</c> for default options.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="file"/> is <c>null</c> or empty.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// This <see cref="Resolve(string,ResolveAction,ResolveCommand)"/> method does not accept the <see cref="ResolveAction.List"/> action.
         /// </exception>
         public void Resolve(string file, ResolveAction action, ResolveCommand command = null)
@@ -1805,7 +1805,7 @@ namespace Mercurial
         /// A collection of <see cref="MergeConflict"/> objects in the case of a <see cref="ResolveAction.List"/> action;
         /// or <c>null</c> if any other action was performed.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         public IEnumerable<MergeConflict> Resolve(ResolveCommand command)
@@ -1897,7 +1897,7 @@ namespace Mercurial
         /// <param name="command">
         /// The options to the cat command.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c>.</para>
         /// </exception>
         /// <returns>
@@ -1925,10 +1925,10 @@ namespace Mercurial
         /// <returns>
         /// The diff command output.
         /// </returns>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="revisions"/> is <c>null</c>.</para>
         /// </exception>
-        /// <exception cref="ArgumentException">
+        /// <exception cref="System.ArgumentException">
         /// <para><paramref name="command"/>.<see cref="DiffCommand.Revisions">Revisions</see> cannot be set before calling this method.</para>
         /// </exception>
         public string Diff(RevSpec revisions, DiffCommand command = null)
@@ -1987,10 +1987,10 @@ namespace Mercurial
         #endregion
 
         /// <summary>
-        /// Returns a <see cref="String"/> that represents the current <see cref="Repository"/>.
+        /// Returns a <see cref="string"/> that represents the current <see cref="Repository"/>.
         /// </summary>
         /// <returns>
-        /// A <see cref="String"/> that represents the current <see cref="Repository"/>.
+        /// A <see cref="string"/> that represents the current <see cref="Repository"/>.
         /// </returns>
         public override string ToString()
         {

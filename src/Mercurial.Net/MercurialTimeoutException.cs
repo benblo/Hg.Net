@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This exception denotes that the Mercurial command line client executable

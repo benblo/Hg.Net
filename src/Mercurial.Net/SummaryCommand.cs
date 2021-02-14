@@ -1,7 +1,7 @@
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg summary" command (<see href="http://www.selenic.com/mercurial/hg.1.html#summary"/>):
@@ -82,7 +82,7 @@ namespace Mercurial
         }
 
         /// <inheritdoc/>
-        [DefaultValueAttribute(false)]
+        [DefaultValue(false)]
         public new bool UseInPersistentClient { get; set; }
     }
 }

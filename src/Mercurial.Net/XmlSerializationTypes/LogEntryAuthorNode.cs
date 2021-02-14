@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Xml.Serialization;
 
-namespace Mercurial.XmlSerializationTypes
+namespace Mercurial.Net.XmlSerializationTypes
 {
     /// <summary>
     /// This class encapsulates a &lt;author...&gt; node in the log output.

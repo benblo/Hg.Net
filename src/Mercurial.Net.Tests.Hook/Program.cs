@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
-using Mercurial.Hooks;
+using Mercurial.Net.Hooks;
 
 namespace Mercurial.Net.Tests.Hook
 {

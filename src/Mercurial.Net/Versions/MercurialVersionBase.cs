@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Mercurial.Versions
+namespace Mercurial.Net.Versions
 {
     /// <summary>
     /// This class, and its descendants implements version-specific features of Mercurial.
@@ -43,7 +43,7 @@ namespace Mercurial.Versions
         /// <param name="version">
         /// The version to find the correct <see cref="MercurialVersionBase"/> implementation for.
         /// </param>
-        /// <exception cref="InvalidOperationException">
+        /// <exception cref="System.InvalidOperationException">
         /// Internal error, unable to find correct implementation for Mercurial version <paramref name="version"/>.
         /// </exception>
         public static void AssignCurrent(Version version)
@@ -64,7 +64,7 @@ namespace Mercurial.Versions
         /// <param name="version">
         /// The version to find the correct <see cref="MercurialVersionBase"/> implementation for.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="version"/> is <c>null</c>.</para>
         /// </exception>
         public static MercurialVersionBase GetImplementationFor(Version version)
@@ -116,7 +116,7 @@ namespace Mercurial.Versions
         /// <param name="repositoryPath">
         /// The path to the repository that the locks exists in.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="repositoryPath"/> is <c>null</c> or empty.</para>
         /// </exception>
         public virtual void WaitForLocksToDissipate(string repositoryPath)

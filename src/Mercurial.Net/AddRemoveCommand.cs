@@ -1,8 +1,8 @@
 using System;
 using System.ComponentModel;
-using Mercurial.Attributes;
+using Mercurial.Net.Attributes;
 
-namespace Mercurial
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class implements the "hg addremove" command (<see href="http://www.selenic.com/mercurial/hg.1.html#addremove"/>):
@@ -30,7 +30,7 @@ namespace Mercurial
         /// option to the addremove command.
         /// Default is <c>null</c>
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">
+        /// <exception cref="System.ArgumentOutOfRangeException">
         /// <para>Attempted set to less than 0 or greater than 100.</para>
         /// </exception>
         [NullableArgument(NonNullOption = "--similarity")]

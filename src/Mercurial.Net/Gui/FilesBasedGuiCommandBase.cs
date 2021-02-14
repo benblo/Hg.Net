@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using Mercurial.Gui.Clients;
+using Mercurial.Net.Gui.Clients;
 
-namespace Mercurial.Gui
+namespace Mercurial.Net.Gui
 {
     /// <summary>
     /// This is the base class for option classes for various commands for
@@ -33,7 +33,7 @@ namespace Mercurial.Gui
         /// <param name="command">
         /// The name of the command that will be passed to the TortoiseHg command line client.
         /// </param>
-        /// <exception cref="ArgumentNullException">
+        /// <exception cref="System.ArgumentNullException">
         /// <para><paramref name="command"/> is <c>null</c> or empty.</para>
         /// </exception>
         protected FilesBasedGuiCommandBase(string command)

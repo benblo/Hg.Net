@@ -1,7 +1,10 @@
 using System;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
-namespace Mercurial
+[assembly: InternalsVisibleTo("Mercurial.Net.Tests")]
+
+namespace Mercurial.Net
 {
     /// <summary>
     /// This class encapsulates a path with an associated action related to a
@@ -64,10 +67,10 @@ namespace Mercurial
         #endregion
 
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// Returns a <see cref="string"/> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
+        /// A <see cref="string"/> that represents this instance.
         /// </returns>
         public override string ToString()
         {

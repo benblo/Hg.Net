@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
 
-namespace Mercurial.Attributes
+namespace Mercurial.Net.Attributes
 {
     /// <summary>
     /// This attribute can be applied to enum-properties in option classes,
@@ -95,7 +95,7 @@ namespace Mercurial.Attributes
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the enum value is a bitmask value (see <see cref="FlagsAttribute"/>)
+        /// Gets or sets a value indicating whether the enum value is a bitmask value (see <see cref="System.FlagsAttribute"/>)
         /// or not.
         /// </summary>
         public bool IsBitmask
