@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <package >
     <metadata>
-        <id>Hg.Net</id>
+        <id>Hg.Client</id>
         <version>$version$</version>
-        <title>Hg.Net</title>
-        <authors>vCipher</authors>
-        <owners>vCipher</owners>
-        <description>Mercurial command line client wrapper assembly </description>
-        <copyright>Copyright © vCipher 2017</copyright>
+        <title>Hg.Client</title>
+        <authors>sacrorum</authors>
+        <owners>sacrorum</owners>
+        <description>Mercurial command line client wrapper assembly</description>
+        <copyright>Copyright © sacrorum 2020</copyright>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <licenseUrl>https://github.com/vCipher/Hg.Net/license</licenseUrl>
         <projectUrl>https://github.com/vCipher/Hg.Net</projectUrl>
         <tags>hg mercurial vcs</tags>
     </metadata>
     <files>
-        <file src="Mercurial.Net.dll" target="lib\net461" />
-        <file src="Mercurial.Net.xml" target="lib\net461" />
+        <file src="Mercurial.Net.dll" target="lib\netcore50" />
+        <file src="Mercurial.Net.xml" target="lib\netcore50" />
     </files>
 </package>

@@ -4,6 +4,15 @@
         <TargetFramework>net5.0</TargetFramework>
         <Configurations>Debug;Release;Test</Configurations>
         <Platforms>AnyCPU</Platforms>
+        <PackageId>Hg.Client</PackageId>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Title>Hg.Client</Title>
+        <Authors>rexsacrorum</Authors>
+        <Description>.NET wrapper class library for the Mercurial Distributed Version Control System (DVCS)</Description>
+        <PackageProjectUrl>https://github.com/rexsacrorum/Hg.Client</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/rexsacrorum/Hg.Client</RepositoryUrl>
+        <PackageTags>hg mercurial tortoise vcs</PackageTags>
+        <PackageLicenseUrl>https://github.com/rexsacrorum/Hg.Client/blob/master/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Test' ">
