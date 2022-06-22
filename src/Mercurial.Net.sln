@@ -13,6 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercurial.Net.Tests", "Merc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercurial.Net.Tests.Hook", "Mercurial.Net.Tests.Hook\Mercurial.Net.Tests.Hook.csproj", "{486D3FAB-5FAC-4230-B0B4-3E355FE1033B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp-.NET-4.7", "ConsoleApp-.NET-4.7\ConsoleApp-.NET-4.7.csproj", "{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp-.NET-5.0", "ConsoleApp-.NET-5.0\ConsoleApp-.NET-5.0.csproj", "{6F784B79-270C-4214-8378-B992F53423D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp-.NET-6.0", "ConsoleApp-.NET-6.0\ConsoleApp-.NET-6.0.csproj", "{675E484F-4022-43B2-9B47-10BBE89B4FF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp-.NETCore-3.1", "ConsoleApp-.NETCore-3.1\ConsoleApp-.NETCore-3.1.csproj", "{4D27955F-B4D3-4701-BEBF-5D160D4CD400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +46,30 @@ Global
 		{486D3FAB-5FAC-4230-B0B4-3E355FE1033B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{486D3FAB-5FAC-4230-B0B4-3E355FE1033B}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
 		{486D3FAB-5FAC-4230-B0B4-3E355FE1033B}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F9FED6-43EC-4511-9D32-F19E79E42C4A}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{6F784B79-270C-4214-8378-B992F53423D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F784B79-270C-4214-8378-B992F53423D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F784B79-270C-4214-8378-B992F53423D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F784B79-270C-4214-8378-B992F53423D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F784B79-270C-4214-8378-B992F53423D5}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{6F784B79-270C-4214-8378-B992F53423D5}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{675E484F-4022-43B2-9B47-10BBE89B4FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{675E484F-4022-43B2-9B47-10BBE89B4FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{675E484F-4022-43B2-9B47-10BBE89B4FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{675E484F-4022-43B2-9B47-10BBE89B4FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{675E484F-4022-43B2-9B47-10BBE89B4FF6}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{675E484F-4022-43B2-9B47-10BBE89B4FF6}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
+		{4D27955F-B4D3-4701-BEBF-5D160D4CD400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D27955F-B4D3-4701-BEBF-5D160D4CD400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D27955F-B4D3-4701-BEBF-5D160D4CD400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D27955F-B4D3-4701-BEBF-5D160D4CD400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D27955F-B4D3-4701-BEBF-5D160D4CD400}.ReleaseBinaries|Any CPU.ActiveCfg = Release|Any CPU
+		{4D27955F-B4D3-4701-BEBF-5D160D4CD400}.ReleaseBinaries|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
