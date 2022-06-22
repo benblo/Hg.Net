@@ -105,7 +105,7 @@ namespace Mercurial
         {
             get;
             internal set;
-        }
+        } = -1;
 
         /// <summary>
         /// Gets the hash of the left parent, or <see cref="string.Empty"/> if this is the initial changeset.
@@ -123,7 +123,7 @@ namespace Mercurial
         {
             get;
             internal set;
-        }
+        } = -1;
 
         /// <summary>
         /// Gets the hash of the right parent, or <see cref="string.Empty"/> if this is the initial changeset.
