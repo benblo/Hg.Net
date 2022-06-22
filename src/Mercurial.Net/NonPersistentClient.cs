@@ -95,6 +95,26 @@ namespace Mercurial
             var encodingName = ClientExecutable.GetTerminalEncoding().WebName;
             //Console.WriteLine("ClientExecutable.GetTerminalEncoding(): " + encodingName);
             encodingName = "IBM437"; // this is the default value in .NET 4.7, but in 5.0+ the name is 'Codepage - 437', which Mercurial doesn't know about
+
+            // trying (and failing) to get filenames with accents to show up correctly...
+            // https://www.mercurial-scm.org/wiki/CharacterEncodingOnWindows
+            //encodingName = "cp1252";
+            //encodingName = "cp1251";
+
+            //encodingName = "utf-8";
+            //encodingName = "utf-16";
+            //encodingName = "";
+            //encodingName = "unicode";
+            //encodingName = Encoding.ASCII.WebName;
+            //encodingName = Encoding.UTF32.WebName;
+            //encodingName = Encoding.UTF7.WebName;
+            //encodingName = "cp437";
+            //encodingName = "latin1";
+            //encodingName = "ISO-8859";
+            //encodingName = "8859";
+            //encodingName = "iso-8859-1";
+            //encodingName = "iso-8859-2";
+
             var specialArguments = (IEnumerable<string>)new[]
             {
                 "--noninteractive", "--encoding", encodingName,
