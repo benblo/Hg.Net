@@ -115,7 +115,7 @@ namespace Mercurial.Configuration
                 var command = new ShowConfigCommand();
                 if (currentWorkingDirectory != null)
                 {
-                    command.AddArgument($"--cwd {currentWorkingDirectory}");
+                    command.AddArgument($"--cwd \"{currentWorkingDirectory}\"");
                 }
                 NonPersistentClient.Execute(command);
 
