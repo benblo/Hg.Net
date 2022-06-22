@@ -93,6 +93,8 @@ namespace Mercurial
 
             ClientExecutable.LazyInitialize();
             var encodingName = ClientExecutable.GetTerminalEncoding().WebName;
+            //Console.WriteLine("ClientExecutable.GetTerminalEncoding(): " + encodingName);
+            encodingName = "IBM437"; // this is the default value in .NET 4.7, but in 5.0+ the name is 'Codepage - 437', which Mercurial doesn't know about
             var specialArguments = (IEnumerable<string>)new[]
             {
                 "--noninteractive", "--encoding", encodingName,
