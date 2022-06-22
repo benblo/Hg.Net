@@ -1,13 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercurial.Net", "Mercurial.Net\Mercurial.Net.csproj", "{536B722B-DE28-48FC-ABAF-12B4B9FFB44A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BD7A7BB2-B1E1-4A9C-B2CB-F10385BB2FDF}"
-ProjectSection(SolutionItems) = preProject
-	README.md = README.md
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mercurial.Net.Tests", "Mercurial.Net.Tests\Mercurial.Net.Tests.csproj", "{7DA876D9-5C17-4147-ABD7-6796A714F20E}"
 EndProject
