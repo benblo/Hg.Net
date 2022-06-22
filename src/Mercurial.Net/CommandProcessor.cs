@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Mercurial
 {
@@ -191,8 +192,8 @@ namespace Mercurial
                 else
                     reader = (StreamReader streamReader, Action<string> logToObserver) => streamReader.ReadToEnd();
 
-                IAsyncResult outputReader = reader.BeginInvoke(process.StandardOutput, line => command.Observer.Output(line), null, null);
-                IAsyncResult errorReader = reader.BeginInvoke(process.StandardError, line => command.Observer.ErrorOutput(line), null, null);
+                var outputReader = Task.Run(() => reader(process.StandardOutput, line => command.Observer.Output(line)));
+                var errorReader = Task.Run(() => reader(process.StandardError, line => command.Observer.ErrorOutput(line)));
 
                 int timeout = Timeout.Infinite;
                 if (command.Timeout > 0)
@@ -205,8 +206,11 @@ namespace Mercurial
                     throw new MercurialException("The executable did not complete within the allotted time");
                 }
 
-                string standardOutput = reader.EndInvoke(outputReader);
-                string errorOutput = reader.EndInvoke(errorReader);
+                outputReader.Wait();
+                string standardOutput = outputReader.Result;
+                errorReader.Wait();
+                string errorOutput = errorReader.Result;
+
 
                 if (command.Observer != null)
                     command.Observer.Executed(command.Command, argumentsString, process.ExitCode, standardOutput, errorOutput);
